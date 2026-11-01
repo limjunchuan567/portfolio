@@ -1,14 +1,1507 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=website/index.html">
-  <title>Jacob's Playground // Loading</title>
-  <script>window.location.href = "website/index.html";</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lim Jun Chuan — Portfolio &amp; Scholarship Profile</title>
+
+  <!-- Google Fonts: Orbitron, Chakra Petch, Nunito Sans, Share Tech Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Nunito+Sans:wght@300;400;600;700;800&family=Orbitron:wght@600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <style>
+    /* ============================================================
+       CYBERPUNK NEON PALETTE & CORE TOKENS
+       ============================================================ */
+    :root {
+      --bg-gradient: linear-gradient(145deg, #0b102b 0%, #0d1e3d 35%, #082933 70%, #191230 100%);
+      --card-bg: rgba(16, 25, 56, 0.88);
+      --card-bg-hover: rgba(22, 34, 72, 0.96);
+      
+      --ink: #f8fafc;
+      --muted: #94a3b8;
+      --muted-bright: #cbd5e1;
+      
+      --neon-cyan: #00f0ff;
+      --neon-magenta: #ff0077;
+      --neon-yellow: #ffd60a;
+      --neon-green: #00f59b;
+      --neon-purple: #9d4edd;
+
+      --line: rgba(0, 240, 255, 0.22);
+      --line-bright: rgba(0, 240, 255, 0.45);
+      --glow-cyan: 0 0 16px rgba(0, 240, 255, 0.4);
+      --glow-magenta: 0 0 16px rgba(255, 0, 119, 0.4);
+
+      --font-display: 'Orbitron', 'Chakra Petch', sans-serif;
+      --font-heading: 'Chakra Petch', sans-serif;
+      --font-body: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'Share Tech Mono', monospace;
+
+      --max-w: 1100px;
+      --radius: 10px;
+      --radius-sm: 6px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      background-size: cover;
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 1.02rem;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Ambient Canvas */
+    #cyber-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+
+    /* Scroll progress bar */
+    #scroll-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta), var(--neon-yellow));
+      box-shadow: 0 0 12px var(--neon-cyan);
+      z-index: 1001;
+      transition: width 0.1s ease-out;
+    }
+
+    /* ============================================================
+       NAVIGATION
+       ============================================================ */
+    header.site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      background: rgba(10, 15, 36, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-logo span.poly {
+      color: var(--neon-cyan);
+      text-shadow: var(--glow-cyan);
+      font-size: 1.4rem;
+    }
+
+    .brand-logo span.tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--neon-green);
+      background: rgba(0, 245, 155, 0.1);
+      border: 1px solid rgba(0, 245, 155, 0.3);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.4rem;
+    }
+
+    nav.nav-bar {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted-bright);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-links a span.num {
+      color: var(--neon-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--neon-cyan);
+      background: rgba(0, 240, 255, 0.1);
+      border-color: var(--line);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .btn-cyber {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-cyber-primary {
+      background: linear-gradient(135deg, var(--neon-cyan), #0099ff);
+      color: #07090e;
+      border: 1px solid var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+    }
+
+    .btn-cyber-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+      color: #000;
+    }
+
+    .btn-cyber-outline {
+      background: rgba(16, 25, 56, 0.7);
+      color: var(--neon-cyan);
+      border: 1px solid var(--line-bright);
+    }
+
+    .btn-cyber-outline:hover {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--neon-cyan);
+      box-shadow: var(--glow-cyan);
+      color: #fff;
+    }
+
+    /* Mobile hamburger */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--neon-cyan);
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       LAYOUT & SECTIONS
+       ============================================================ */
+    main {
+      position: relative;
+      z-index: 10;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    section {
+      padding-top: 5.5rem;
+      scroll-margin-top: 1rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.2rem;
+      position: relative;
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      color: var(--neon-cyan);
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--line-bright), transparent);
+      margin-left: 0.5rem;
+    }
+
+    /* ============================================================
+       HERO SECTION
+       ============================================================ */
+    #hero {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 7rem;
+      padding-bottom: 3rem;
+    }
+
+    .hero-pretitle {
+      font-family: var(--font-mono);
+      color: var(--neon-cyan);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7.5vw, 4.8rem);
+      font-weight: 900;
+      line-height: 1.08;
+      color: #ffffff;
+      text-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-target {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 3.8vw, 2.2rem);
+      font-weight: 700;
+      color: var(--muted-bright);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-target span.hl {
+      color: var(--neon-cyan);
+      text-shadow: var(--glow-cyan);
+    }
+
+    .hero-bio {
+      max-width: 680px;
+      color: var(--muted-bright);
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .badge-pill {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 0.95rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(16, 25, 56, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
+      color: #fff;
+    }
+
+    .badge-pill.cyan { border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 10px rgba(0, 240, 255, 0.2); }
+    .badge-pill.green { border-color: var(--neon-green); color: var(--neon-green); box-shadow: 0 0 10px rgba(0, 245, 155, 0.2); }
+    .badge-pill.yellow { border-color: var(--neon-yellow); color: var(--neon-yellow); box-shadow: 0 0 10px rgba(255, 214, 10, 0.2); }
+    .badge-pill.magenta { border-color: var(--neon-magenta); color: var(--neon-magenta); box-shadow: 0 0 10px rgba(255, 0, 119, 0.2); }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ============================================================
+       CARDS & GRIDS
+       ============================================================ */
+    .cyber-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cyber-card:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .card-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .card-title-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .card-icon-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.45rem;
+      flex-shrink: 0;
+    }
+
+    .card-icon-badge.cyan {
+      background: rgba(0, 240, 255, 0.15);
+      color: var(--neon-cyan);
+      border: 1px solid var(--neon-cyan);
+      box-shadow: var(--glow-cyan);
+    }
+    .card-icon-badge.magenta {
+      background: rgba(255, 0, 119, 0.15);
+      color: var(--neon-magenta);
+      border: 1px solid var(--neon-magenta);
+      box-shadow: var(--glow-magenta);
+    }
+    .card-icon-badge.yellow {
+      background: rgba(255, 214, 10, 0.15);
+      color: var(--neon-yellow);
+      border: 1px solid var(--neon-yellow);
+      box-shadow: 0 0 16px rgba(255, 214, 10, 0.35);
+    }
+    .card-icon-badge.green {
+      background: rgba(0, 245, 155, 0.15);
+      color: var(--neon-green);
+      border: 1px solid var(--neon-green);
+      box-shadow: 0 0 16px rgba(0, 245, 155, 0.35);
+    }
+    .card-icon-badge.purple {
+      background: rgba(157, 78, 221, 0.18);
+      color: #d8b4fe;
+      border: 1px solid var(--neon-purple);
+      box-shadow: 0 0 16px rgba(157, 78, 221, 0.35);
+    }
+
+    .card-heading {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .card-sub {
+      font-size: 0.88rem;
+      color: var(--neon-cyan);
+      font-family: var(--font-heading);
+      font-weight: 600;
+    }
+
+    .tag-mono {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: rgba(10, 15, 36, 0.7);
+    }
+
+    /* ============================================================
+       ACADEMIC / RESULTS TABLE
+       ============================================================ */
+    .results-table-wrap {
+      overflow-x: auto;
+      margin: 1.2rem 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: rgba(10, 15, 36, 0.6);
+    }
+
+    table.cyber-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      text-align: left;
+    }
+
+    table.cyber-table th {
+      background: rgba(0, 240, 255, 0.08);
+      color: var(--neon-cyan);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      padding: 0.75rem 1.2rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    table.cyber-table td {
+      padding: 0.75rem 1.2rem;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.08);
+      color: var(--muted-bright);
+    }
+
+    table.cyber-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.cyber-table tr:hover td {
+      background: rgba(0, 240, 255, 0.04);
+    }
+
+    .grade-badge-a {
+      color: var(--neon-green);
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(0, 245, 155, 0.4);
+    }
+
+    .level-tag {
+      color: var(--neon-magenta);
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       SKILLS & CAPABILITIES
+       ============================================================ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .skill-box h4 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-pill {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--neon-cyan);
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .skill-pill:hover {
+      background: rgba(0, 240, 255, 0.2);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+      color: #fff;
+    }
+
+    /* ============================================================
+       EXPERIENCES & IMPACT (CARDS WITH BACKDROPS)
+       ============================================================ */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .exp-body p {
+      color: var(--muted-bright);
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .exp-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-body b {
+      color: var(--neon-cyan);
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       AWARDS LIST (INTERACTIVE CYBER ACCORDION/LIST)
+       ============================================================ */
+    .awards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .award-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      transition: all 0.25s ease;
+    }
+
+    .award-row:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+      transform: translateX(6px);
+    }
+
+    .award-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .award-title-wrap i {
+      font-size: 1.4rem;
+      color: var(--neon-yellow);
+    }
+
+    .award-title-wrap h4 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .award-title-wrap p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .award-year {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--neon-yellow);
+      background: rgba(255, 214, 10, 0.12);
+      border: 1px solid rgba(255, 214, 10, 0.3);
+      padding: 0.25rem 0.8rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       TESTIMONIALS (TABS)
+       ============================================================ */
+    .testimonial-tabs {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .t-tab-btn {
+      background: rgba(16, 25, 56, 0.7);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 0.55rem 1.3rem;
+      border-radius: 999px;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .t-tab-btn:hover {
+      border-color: var(--neon-cyan);
+      color: #fff;
+    }
+
+    .t-tab-btn.active {
+      background: linear-gradient(135deg, var(--neon-cyan), #0099ff);
+      border-color: var(--neon-cyan);
+      color: #07090e;
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+
+    .testimonial-panel {
+      display: none;
+      animation: fadeEffect 0.35s ease;
+    }
+
+    .testimonial-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeEffect {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .quote-box {
+      border-left: 4px solid var(--neon-cyan);
+      padding-left: 1.4rem;
+      margin-bottom: 1.2rem;
+      font-style: italic;
+      color: var(--muted-bright);
+    }
+
+    /* ============================================================
+       CONTACT & FOOTER
+       ============================================================ */
+    #contact {
+      text-align: center;
+      padding-bottom: 4rem;
+    }
+
+    .contact-card {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .contact-card p {
+      color: var(--muted-bright);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: rgba(8, 12, 30, 0.95);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    footer a {
+      color: var(--neon-cyan);
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       RESPONSIVE DESIGN
+       ============================================================ */
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      header.site-header {
+        padding: 0 1.2rem;
+      }
+      main {
+        padding: 0 1.1rem 4rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .award-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .card-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-buttons {
+        flex-direction: column;
+      }
+      .hero-buttons .btn-cyber {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
-<body style="background: #07090e; color: #00f0ff; text-align: center; padding-top: 30vh; font-family: monospace;">
-  <p>// CONNECTING TO JACOB'S PLAYGROUND...</p>
-  <p><a href="website/index.html" style="color: #00f0ff; text-decoration: none;">Click here if not redirected automatically</a></p>
+<body>
+
+  <!-- Ambient Animated Cyber Canvas -->
+  <canvas id="cyber-canvas"></canvas>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-bar"></div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <a href="#hero" class="brand-logo">
+      <span class="poly">⬡</span>
+      <span>LIM JUN CHUAN</span>
+      <span class="tag">ORD FEB 2027</span>
+    </a>
+
+    <nav class="nav-bar">
+      <ul class="nav-links">
+        <li><a href="#about"><span class="num">01.</span>About</a></li>
+        <li><a href="#education"><span class="num">02.</span>Education</a></li>
+        <li><a href="#skills"><span class="num">03.</span>Skills</a></li>
+        <li><a href="#experience"><span class="num">04.</span>Leadership</a></li>
+        <li><a href="#awards"><span class="num">05.</span>Awards</a></li>
+        <li><a href="#testimonials"><span class="num">06.</span>Testimonials</a></li>
+        <li><a href="#contact"><span class="num">07.</span>Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://drive.google.com/file/d/1J1Yv6Yk2QS0RFgWHPvFAE156v3FK8xhd/view?usp=sharing" target="_blank" rel="noopener" class="btn-cyber btn-cyber-primary">
+          <i class="bi bi-file-earmark-pdf-fill"></i> Certs PDF
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════
+         01. HERO SECTION
+         ═══════════════════════════════════════════════ -->
+    <section id="hero">
+      <div class="hero-pretitle">
+        <i class="bi bi-terminal-fill"></i>
+        <span>ASPIRING COMPUTER SCIENTIST &amp; SYSTEMS INNOVATOR</span>
+      </div>
+      <h1 class="hero-name">Lim Jun Chuan</h1>
+      <h2 class="hero-target">
+        Targeting <span class="hl">NUS Computer Science (AY2027)</span>
+      </h2>
+      <p class="hero-bio">
+        Driven by rigorous mathematical modeling, engineering discipline, and a deep dedication to human-centric computing. Passionate about leveraging Artificial Intelligence, Machine Learning, and scalable software architecture to engineer digital equity and build technology for social good.
+      </p>
+
+      <div class="hero-badges">
+        <span class="badge-pill cyan"><i class="bi bi-patch-check-fill"></i> MOE ETPS Scholar</span>
+        <span class="badge-pill green"><i class="bi bi-shield-fill"></i> Full-Time NS (ORD 2 Feb 2027)</span>
+        <span class="badge-pill yellow"><i class="bi bi-mortarboard-fill"></i> 87.75 Rank Points (A-Levels)</span>
+        <span class="badge-pill magenta"><i class="bi bi-code-slash"></i> Python &amp; C++</span>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#education" class="btn-cyber btn-cyber-primary">
+          <i class="bi bi-mortarboard me-1"></i> Academic Profile
+        </a>
+        <a href="https://drive.google.com/file/d/1J1Yv6Yk2QS0RFgWHPvFAE156v3FK8xhd/view?usp=sharing" target="_blank" rel="noopener" class="btn-cyber btn-cyber-outline">
+          <i class="bi bi-file-earmark-pdf"></i> Verified Certifications
+        </a>
+        <a href="https://github.com/limjunchuan567" target="_blank" rel="noopener" class="btn-cyber btn-cyber-outline">
+          <i class="bi bi-github"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/lim-jun-chuan-6839022b4" target="_blank" rel="noopener" class="btn-cyber btn-cyber-outline">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         02. ABOUT & PHILOSOPHY
+         ═══════════════════════════════════════════════ -->
+    <section id="about">
+      <div class="section-header">
+        <div class="section-num"><i class="bi bi-hash"></i> 01 // OVERVIEW</div>
+        <h2 class="section-title">About &amp; Mission Statement</h2>
+      </div>
+
+      <div class="cyber-card">
+        <div class="card-banner">
+          <div class="card-title-group">
+            <div class="card-icon-badge cyan">
+              <i class="bi bi-compass-fill"></i>
+            </div>
+            <div>
+              <h3 class="card-heading">Engineering Rigor With Social Purpose</h3>
+              <span class="card-sub">Philosophy &amp; Vision</span>
+            </div>
+          </div>
+        </div>
+        <div class="exp-body">
+          <p>
+            Driven by a fascination with complex problem-solving, I have dedicated my academic development to mastering the foundational disciplines of modern computing, including <b>Python</b> and <b>C++</b>. I believe technology is most transformative when built with empathy and dedicated to human empowerment.
+          </p>
+          <p>
+            From organizing the national-level <b>Disability Awareness and Experiential Carnival</b> to designing personalized literacy sessions for primary school pupils and accompanying elderly citizens at the National Orchid Garden, my work outside the classroom defines my purpose: <b>bridging gaps in access and equity</b>.
+          </p>
+          <p>
+            Currently serving full-time <b>National Service (ORD: 2 Feb 2027)</b>, I am honing operational resilience, adaptability, and high-stakes teamwork. Upon matriculating into <b>NUS Computer Science in AY2027</b>, I aim to merge high-performance computing, data science, and AI systems to create tangible public good for Singapore and the global community.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         03. EDUCATION
+         ═══════════════════════════════════════════════ -->
+    <section id="education">
+      <div class="section-header">
+        <div class="section-num"><i class="bi bi-hash"></i> 02 // ACADEMICS</div>
+        <h2 class="section-title">Educational Background</h2>
+      </div>
+
+      <!-- NUS CS Card -->
+      <div class="cyber-card mb-4" style="margin-bottom: 1.8rem;">
+        <div class="card-banner">
+          <div class="card-title-group">
+            <div class="card-icon-badge cyan">
+              <i class="bi bi-mortarboard-fill"></i>
+            </div>
+            <div>
+              <h3 class="card-heading">National University of Singapore (NUS)</h3>
+              <span class="card-sub">Bachelor of Computing in Computer Science &nbsp;·&nbsp; AY2027 Intake</span>
+            </div>
+          </div>
+          <span class="tag-mono" style="color:var(--neon-green);border-color:var(--neon-green);">Upcoming Matriculation</span>
+        </div>
+        <div class="exp-body">
+          <p>
+            Admitted to the premier <b>NUS School of Computing</b>. Specialization interests include <b>Artificial Intelligence &amp; Machine Learning</b>, <b>Data Science &amp; Analytics</b>, and <b>Computer Graphics</b>.
+          </p>
+        </div>
+      </div>
+
+      <!-- RVHS A-Levels Card -->
+      <div class="cyber-card mb-4" style="margin-bottom: 1.8rem;">
+        <div class="card-banner">
+          <div class="card-title-group">
+            <div class="card-icon-badge magenta">
+              <i class="bi bi-building-fill"></i>
+            </div>
+            <div>
+              <h3 class="card-heading">River Valley High School (Junior College)</h3>
+              <span class="card-sub">Singapore-Cambridge GCE 'A' Level (2024 Sitting · 90 RP System)</span>
+            </div>
+          </div>
+          <span class="tag-mono" style="color:var(--neon-yellow);border-color:var(--neon-yellow);font-weight:700;">87.75 Rank Points</span>
+        </div>
+        <div class="exp-body">
+          <p>
+            Demonstrated sustained academic excellence across rigorous STEM and humanities subjects, attaining distinctions across all 4 H2 subjects:
+          </p>
+          <div class="results-table-wrap">
+            <table class="cyber-table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Level</th>
+                  <th>Grade</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mathematics</td>
+                  <td><span class="level-tag">H2</span></td>
+                  <td><span class="grade-badge-a">A</span></td>
+                  <td>Pure Math, Linear Algebra, Probability &amp; Statistics</td>
+                </tr>
+                <tr>
+                  <td>Chemistry</td>
+                  <td><span class="level-tag">H2</span></td>
+                  <td><span class="grade-badge-a">A</span></td>
+                  <td>Physical, Inorganic, &amp; Organic Chemistry</td>
+                </tr>
+                <tr>
+                  <td>Physics</td>
+                  <td><span class="level-tag">H2</span></td>
+                  <td><span class="grade-badge-a">A</span></td>
+                  <td>Classical Mechanics, Electromagnetism, Quantum &amp; Nuclear</td>
+                </tr>
+                <tr>
+                  <td>Economics</td>
+                  <td><span class="level-tag">H2</span></td>
+                  <td><span class="grade-badge-a">A</span></td>
+                  <td>Microeconomics, Macroeconomics, Market Analysis &amp; Policy</td>
+                </tr>
+                <tr>
+                  <td>Chinese Language</td>
+                  <td><span class="level-tag" style="color:var(--neon-cyan);">H1</span></td>
+                  <td><span class="grade-badge-a">A</span></td>
+                  <td>Mother Tongue Language Proficiency</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:0.92rem;color:var(--muted);margin-top:0.6rem;">
+            *Recipient of the prestigious <b>MOE Engineering &amp; Technology Programme (ETPS) Scholarship</b> throughout JC1 and JC2 (2023–2024).
+          </p>
+        </div>
+      </div>
+
+      <!-- BPGHS O-Levels Card -->
+      <div class="cyber-card">
+        <div class="card-banner">
+          <div class="card-title-group">
+            <div class="card-icon-badge yellow">
+              <i class="bi bi-building"></i>
+            </div>
+            <div>
+              <h3 class="card-heading">Bukit Panjang Government High School</h3>
+              <span class="card-sub">Singapore-Cambridge GCE 'O' Level</span>
+            </div>
+          </div>
+          <span class="tag-mono" style="color:var(--neon-green);border-color:var(--neon-green);">STEM Distinctions</span>
+        </div>
+        <div class="exp-body">
+          <p>
+            Graduated with an exceptional STEM foundation, achieving <b>A1 distinctions</b> across:
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.6rem;">
+            <span class="skill-pill">Mathematics — A1</span>
+            <span class="skill-pill">Additional Mathematics — A1</span>
+            <span class="skill-pill">Physics — A1</span>
+            <span class="skill-pill">Chemistry — A1</span>
+            <span class="skill-pill">Biology — A1</span>
+            <span class="skill-pill">English Language — A2</span>
+            <span class="skill-pill">Chinese Language — A2</span>
+            <span class="skill-pill">Social Studies &amp; Geography — A2</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         04. TECHNICAL COMPETENCIES
+         ═══════════════════════════════════════════════ -->
+    <section id="skills">
+      <div class="section-header">
+        <div class="section-num"><i class="bi bi-hash"></i> 03 // COMPETENCIES</div>
+        <h2 class="section-title">Technical Strengths &amp; Domain Focus</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="cyber-card skill-box">
+          <h4><i class="bi bi-code-slash text-info"></i> Programming &amp; Web</h4>
+          <div class="skill-pills">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">C++</span>
+            <span class="skill-pill">HTML5</span>
+            <span class="skill-pill">CSS3 / Neon Cyber</span>
+            <span class="skill-pill">JavaScript (ES6+)</span>
+            <span class="skill-pill">Git / GitHub</span>
+          </div>
+        </div>
+
+        <div class="cyber-card skill-box">
+          <h4><i class="bi bi-cpu text-warning"></i> Computing Domains</h4>
+          <div class="skill-pills">
+            <span class="skill-pill">Artificial Intelligence</span>
+            <span class="skill-pill">Machine Learning</span>
+            <span class="skill-pill">Data Analytics</span>
+            <span class="skill-pill">Computer Graphics</span>
+            <span class="skill-pill">Embedded Systems</span>
+            <span class="skill-pill">Algorithms &amp; Data Structures</span>
+          </div>
+        </div>
+
+        <div class="cyber-card skill-box">
+          <h4><i class="bi bi-tools text-success"></i> Engineering &amp; Leadership</h4>
+          <div class="skill-pills">
+            <span class="skill-pill">Cross-Functional Teamwork</span>
+            <span class="skill-pill">Logistics &amp; Operations</span>
+            <span class="skill-pill">Webmaster Architecture</span>
+            <span class="skill-pill">Technical Documentation</span>
+            <span class="skill-pill">Public Service VIA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         05. LEADERSHIP & EXPERIENCES
+         ═══════════════════════════════════════════════ -->
+    <section id="experience">
+      <div class="section-header">
+        <div class="section-num"><i class="bi bi-hash"></i> 04 // LEADERSHIP &amp; IMPACT</div>
+        <h2 class="section-title">Leadership &amp; Field Experiences</h2>
+      </div>
+
+      <div class="experience-list">
+        <!-- Carnival -->
+        <div class="cyber-card" style="background-image: linear-gradient(rgba(14, 22, 52, 0.94), rgba(14, 22, 52, 0.94)), url('website/images/carnival.svg'); background-size: cover; background-position: right center;">
+          <div class="card-banner">
+            <div class="card-title-group">
+              <div class="card-icon-badge magenta">
+                <i class="bi bi-heart-pulse-fill"></i>
+              </div>
+              <div>
+                <h3 class="card-heading">Disability Awareness &amp; Experiential Carnival</h3>
+                <span class="card-sub" style="color:var(--neon-magenta)">Lead Organizer &amp; Simulation Designer · Boon Lay CC</span>
+              </div>
+            </div>
+            <span class="tag-mono">National-Level Community Impact</span>
+          </div>
+          <div class="exp-body">
+            <p>
+              As an organizer for the national-level <b>Disability Awareness and Experiential Carnival</b> at Boon Lay Community Club, I spearheaded the design of interactive, hands-on simulations that moved beyond passive awareness to foster genuine <b>empathy, understanding, and inclusivity</b>.
+            </p>
+            <p>
+              My team developed experiential challenges—including blindfolded obstacle navigation, non-verbal communication stations, and wheelchair soccer—enabling participants to directly encounter and appreciate the physical and emotional barriers faced daily by disabled individuals. Meticulously oversaw <b>logistics, manpower planning, and inter-agency coordination</b> with Boon Lay CC and voluntary welfare organizations.
+            </p>
+          </div>
+        </div>
+
+        <!-- BorgWarner -->
+        <div class="cyber-card" style="background-image: linear-gradient(rgba(14, 22, 52, 0.94), rgba(14, 22, 52, 0.94)), url('website/images/borgwarner.svg'); background-size: cover; background-position: right center;">
+          <div class="card-banner">
+            <div class="card-title-group">
+              <div class="card-icon-badge cyan">
+                <i class="bi bi-gear-fill"></i>
+              </div>
+              <div>
+                <h3 class="card-heading">BorgWarner Engineering Internship</h3>
+                <span class="card-sub">Engineering Processes &amp; Cross-Functional Teamwork</span>
+              </div>
+            </div>
+            <span class="tag-mono">Corporate Engineering Exposure</span>
+          </div>
+          <div class="exp-body">
+            <p>
+              Completed an engineering internship with global automotive and e-mobility technology leader <b>BorgWarner</b>. Collaborated within multidisciplinary engineering teams, observing and evaluating manufacturing and diagnostic protocols.
+            </p>
+            <p>
+              Developed essential 21st-century workplace competencies, including active listening, root-cause process analysis, and inter-departmental communication. Gained direct appreciation for how technical precision, reliability, and human collaboration interface in production systems.
+            </p>
+          </div>
+        </div>
+
+        <!-- Reading Wonders -->
+        <div class="cyber-card" style="background-image: linear-gradient(rgba(14, 22, 52, 0.94), rgba(14, 22, 52, 0.94)), url('website/images/reading.svg'); background-size: cover; background-position: right center;">
+          <div class="card-banner">
+            <div class="card-title-group">
+              <div class="card-icon-badge yellow">
+                <i class="bi bi-book-half"></i>
+              </div>
+              <div>
+                <h3 class="card-heading">Reading Wonders Literacy Programme</h3>
+                <span class="card-sub" style="color:var(--neon-yellow)">Primary 1 Student Reading Mentor · West Grove Primary School</span>
+              </div>
+            </div>
+            <span class="tag-mono">Educational Equity VIA</span>
+          </div>
+          <div class="exp-body">
+            <p>
+              Guided by a commitment to educational equal opportunity, led literacy intervention sessions for Primary 1 pupils facing reading and comprehension hurdles.
+            </p>
+            <p>
+              Adopted a flexible, student-centered approach—incorporating contextual storytelling and visual prompts matched to each child's pace. Learned that celebrating small wins builds genuine self-agency and academic confidence.
+            </p>
+          </div>
+        </div>
+
+        <!-- Reminiscence -->
+        <div class="cyber-card" style="background-image: linear-gradient(rgba(14, 22, 52, 0.94), rgba(14, 22, 52, 0.94)), url('website/images/reminiscence.svg'); background-size: cover; background-position: right center;">
+          <div class="card-banner">
+            <div class="card-title-group">
+              <div class="card-icon-badge green">
+                <i class="bi bi-people-fill"></i>
+              </div>
+              <div>
+                <h3 class="card-heading">Project Reminiscence (Elderly Outreach)</h3>
+                <span class="card-sub" style="color:var(--neon-green)">National Orchid Garden Outings · SAGE Counselling Centre</span>
+              </div>
+            </div>
+            <span class="tag-mono">Senior Mental Health &amp; Inclusivity</span>
+          </div>
+          <div class="exp-body">
+            <p>
+              Partnered with volunteers from <b>SAGE Counselling Centre</b> to coordinate and facilitate curated excursions to the National Orchid Garden for senior citizens.
+            </p>
+            <p>
+              Assisted seniors with mobility challenges, attentively navigating wheelchair ramps and engaging in supportive, intergenerational conversations. Experienced firsthand how meaningful community connection and accessibility directly enhance holistic mental and emotional well-being.
+            </p>
+          </div>
+        </div>
+
+        <!-- School Leadership (Editorial Club & Chinese Orchestra) -->
+        <div class="cyber-card">
+          <div class="card-banner">
+            <div class="card-title-group">
+              <div class="card-icon-badge purple">
+                <i class="bi bi-diagram-3-fill"></i>
+              </div>
+              <div>
+                <h3 class="card-heading">Co-Curricular Leadership &amp; Creative Communication</h3>
+                <span class="card-sub" style="color:#d8b4fe">RVHS Editorial Club &amp; BPGHS Chinese Orchestra</span>
+              </div>
+            </div>
+            <span class="tag-mono">Institutional Leadership</span>
+          </div>
+          <div class="exp-body">
+            <p>
+              <b>RVHS Editorial Club (Webmaster):</b> Managed the digital infrastructure and online publication portal of the school media team. Conducted interviews for milestone events (Teachers' Day, RVmun, YLEAD), collaborating across diverse CCAs to synthesize compelling community narratives.
+            </p>
+            <p>
+              <b>BPGHS Chinese Orchestra (EXCO &amp; Section Leader):</b> Overcame initial audition setbacks through disciplined individual practice and senior mentorship, subsequently leading the section to achieve a <b>Certificate of Distinction</b> at the Singapore Youth Festival (SYF) Arts Presentation 2021.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         06. AWARDS & HONORS
+         ═══════════════════════════════════════════════ -->
+    <section id="awards">
+      <div class="section-header">
+        <div class="section-num"><i class="bi bi-hash"></i> 05 // RECOGNITION</div>
+        <h2 class="section-title">Honors &amp; Awards Archive</h2>
+      </div>
+
+      <div class="awards-container">
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-award-fill" style="color:var(--neon-cyan)"></i>
+            <div>
+              <h4>MOE Engineering &amp; Technology Programme Scholarship (ETPS)</h4>
+              <p>Ministry of Education Singapore · Awarded for top aptitude in mathematics, physical sciences, and engineering</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2023, 2024</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-shield-check" style="color:var(--neon-magenta)"></i>
+            <div>
+              <h4>National Youth Achievement Award (NYAA) — Bronze Medal</h4>
+              <p>National Youth Achievement Award Council Singapore · Community leadership, physical endurance, and personal mastery</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-magenta);border-color:var(--neon-magenta)">2022</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-music-note-beamed" style="color:var(--neon-green)"></i>
+            <div>
+              <h4>Singapore Youth Festival (SYF) Arts Presentation — Distinction</h4>
+              <p>Ministry of Education Singapore · Executive Committee Section Leader, Chinese Orchestra</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2021</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-calculator" style="color:var(--neon-yellow)"></i>
+            <div>
+              <h4>Australian Mathematics Competition (AMC) — Distinction</h4>
+              <p>Australian Maths Trust · Advanced mathematical problem-solving and higher-order logic</p>
+            </div>
+          </div>
+          <span class="award-year">2019</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-globe-americas" style="color:var(--neon-green)"></i>
+            <div>
+              <h4>UNSW Global REACH Assessments in Science — Exemplary</h4>
+              <p>University of New South Wales · Top 1% of candidates in Singapore for scientific analysis</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2019</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
+            <div>
+              <h4>Edusave Certificate of Academic Achievement</h4>
+              <p>Ministry of Education Singapore · Sustained top academic ranking over 4 consecutive years</p>
+            </div>
+          </div>
+          <span class="award-year">2021–2024</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-graph-up-arrow" style="color:var(--neon-cyan)"></i>
+            <div>
+              <h4>Edusave Good Progress Award</h4>
+              <p>Ministry of Education Singapore · Exceptional academic advancement and consistent dedication</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2020, 2021</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
+            <div>
+              <h4>ICAS Assessments for Science &amp; English</h4>
+              <p>UNSW Global · Science Merit Certificate (2022) &amp; English Credit Certificate (2021)</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-purple);border-color:var(--neon-purple)">2021, 2022</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         07. TESTIMONIALS
+         ═══════════════════════════════════════════════ -->
+    <section id="testimonials">
+      <div class="section-header">
+        <div class="section-num"><i class="bi bi-hash"></i> 06 // ENDORSEMENTS</div>
+        <h2 class="section-title">Institutional Appraisals</h2>
+      </div>
+
+      <div class="testimonial-tabs">
+        <button class="t-tab-btn active" onclick="switchTestimonial('rvhs', this)">
+          <i class="bi bi-mortarboard-fill"></i> River Valley High School (JC)
+        </button>
+        <button class="t-tab-btn" onclick="switchTestimonial('bpghs', this)">
+          <i class="bi bi-building"></i> Bukit Panjang Govt. High School
+        </button>
+      </div>
+
+      <div id="panel-rvhs" class="cyber-card testimonial-panel active">
+        <div class="quote-box">
+          <p>
+            “Jun Chuan embodies one of the 21st century competencies as a critical thinker. He is a thoughtful and creative individual who thrives when he is challenged to look at issues and problems from multiple perspectives.”
+          </p>
+        </div>
+        <div class="quote-box">
+          <p>
+            “When tasked to analyse the various uses and inner workings of satellites, Jun Chuan carried his research into the area of satellites, giving greater breadth of perspective by studying how satellite technology and space exploration were influenced by this event... When he joined a new project team with unfamiliar team members, he quickly adapted by actively listening to his group mates, seeking to understand their perspectives, ideas, and concerns, learning from their expertise, and adjusting his approach to maximise teamwork and productivity.”
+          </p>
+        </div>
+        <p style="font-family:var(--font-mono);font-size:0.88rem;color:var(--neon-cyan)">
+          — Official Testimonial, River Valley High School Junior College (2023–2024)
+        </p>
+      </div>
+
+      <div id="panel-bpghs" class="cyber-card testimonial-panel">
+        <div class="quote-box">
+          <p>
+            “Jun Chuan is a hardworking, conscientious, and motivated pupil. He shows an avid interest in his work and is keen to learn. His positive learning attitude is evident in his inquisitive nature and his willingness to ask questions whenever he is in doubt. With strong self-discipline, Jun Chuan has made outstanding progress in his academic pursuits.”
+          </p>
+        </div>
+        <div class="quote-box">
+          <p>
+            “Jun Chuan has shown great proficiency and talent in Mathematics and Science. He is a perceptive and sharp individual with a strong drive to understand how things work... His personal traits and character will undoubtedly stand him in good stead as he continues to pursue success in his future endeavours.”
+          </p>
+        </div>
+        <p style="font-family:var(--font-mono);font-size:0.88rem;color:var(--neon-cyan)">
+          — Official Testimonial, Bukit Panjang Government High School
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         08. CONTACT & DIRECT CHANNELS
+         ═══════════════════════════════════════════════ -->
+    <section id="contact">
+      <div class="section-header" style="justify-content:center;">
+        <div class="section-num"><i class="bi bi-hash"></i> 07 // GET IN TOUCH</div>
+      </div>
+
+      <div class="cyber-card contact-card">
+        <h2 style="font-family:var(--font-display);font-size:2.2rem;color:#fff;margin-bottom:1rem;">
+          Let's Connect
+        </h2>
+        <p>
+          Whether for scholarship interviews, technical project inquiries, or academic discussions regarding NUS Computer Science AY2027, I welcome direct correspondence.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:limjunchuan567@gmail.com" class="btn-cyber btn-cyber-primary">
+            <i class="bi bi-envelope-fill"></i> limjunchuan567@gmail.com
+          </a>
+          <a href="https://drive.google.com/file/d/1J1Yv6Yk2QS0RFgWHPvFAE156v3FK8xhd/view?usp=sharing" target="_blank" rel="noopener" class="btn-cyber btn-cyber-outline">
+            <i class="bi bi-file-earmark-pdf-fill"></i> Official Credentials PDF
+          </a>
+          <a href="https://www.linkedin.com/in/lim-jun-chuan-6839022b4" target="_blank" rel="noopener" class="btn-cyber btn-cyber-outline">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/limjunchuan567" target="_blank" rel="noopener" class="btn-cyber btn-cyber-outline">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Designed &amp; Engineered by <b>Lim Jun Chuan</b> · Target NUS Computer Science AY2027
+    </p>
+    <p style="font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);margin-top:0.5rem;">
+      Hosted on GitHub Pages · Verified Profile &amp; Scholarship Portfolio
+    </p>
+  </footer>
+
+  <!-- ============================================================
+       LIGHTWEIGHT INTERACTIVE SCRIPTS & CANVAS
+       ============================================================ -->
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scroll-bar').style.width = scrolled + '%';
+    });
+
+    // Testimonial tab switcher
+    function switchTestimonial(id, btn) {
+      document.querySelectorAll('.testimonial-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.t-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // Cyber particle background canvas
+    const canvas = document.getElementById('cyber-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles;
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particles = [];
+      const count = Math.floor(width / 24);
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.random() * 1.5 + 0.8,
+          color: Math.random() > 0.4 ? 'rgba(0, 240, 255, 0.45)' : 'rgba(255, 0, 119, 0.35)'
+        });
+      }
+    }
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Connect near particles
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        p1.x += p1.vx;
+        p1.y += p1.vy;
+
+        if (p1.x < 0) p1.x = width;
+        if (p1.x > width) p1.x = 0;
+        if (p1.y < 0) p1.y = height;
+        if (p1.y > height) p1.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p1.color;
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(0, 240, 255, ${0.15 * (1 - dist / 110)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(renderCanvas);
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+    renderCanvas();
+  </script>
 </body>
 </html>
-
