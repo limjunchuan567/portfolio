@@ -608,56 +608,56 @@
     }
 
     /* ============================================================
-       AWARDS LIST (CHRONOLOGICAL ORDER: NEWEST FIRST)
+       AWARDS LIST (GROUPED AWARDS WITH DETAILED ACCORDION DESCRIPTIONS)
        ============================================================ */
     .awards-container {
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
+      gap: 1.1rem;
     }
 
-    .award-row {
+    .award-card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 1.3rem 1.6rem;
+      transition: all 0.25s ease;
+    }
+
+    .award-card:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+      transform: translateX(4px);
+    }
+
+    .award-header-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 1.1rem 1.5rem;
-      background: var(--card-bg);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      transition: all 0.25s ease;
-    }
-
-    .award-row:hover {
-      border-color: var(--neon-cyan);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
-      transform: translateX(6px);
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
     }
 
     .award-title-wrap {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.9rem;
     }
 
     .award-title-wrap i {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--neon-yellow);
     }
 
     .award-title-wrap h4 {
       font-family: var(--font-heading);
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: #fff;
       font-weight: 700;
     }
 
-    .award-title-wrap p {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .award-year {
+    .award-years-tag {
       font-family: var(--font-mono);
       font-size: 0.88rem;
       color: var(--neon-yellow);
@@ -666,6 +666,12 @@
       padding: 0.25rem 0.8rem;
       border-radius: 4px;
       white-space: nowrap;
+    }
+
+    .award-desc-text {
+      color: var(--muted-bright);
+      font-size: 0.94rem;
+      line-height: 1.7;
     }
 
     /* ============================================================
@@ -799,10 +805,10 @@
     }
 
     @media (max-width: 600px) {
-      .award-row {
+      .award-header-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.6rem;
+        gap: 0.5rem;
       }
       .card-banner {
         flex-direction: column;
@@ -916,13 +922,13 @@
         </div>
         <div class="exp-body">
           <p>
-            Driven by a fascination with complex problem-solving, I have dedicated my academic development to mastering the foundational disciplines of modern computing, including <b>Python</b> and <b>C++</b>. I believe technology is most transformative when built with empathy and dedicated to human empowerment.
+            Driven by a fascination with complex problem-solving, I have focused my academic journey on mastering the languages of the future, including <b>Python</b> and <b>C++</b>. However, I believe technology is most powerful when it serves a human purpose. My study and preparation has equipped me with the analytical tools to build efficient systems, but my work beyond the screen defines my mission.
           </p>
           <p>
-            From organizing the national-level <b>Disability Awareness and Experiential Carnival</b> to designing personalized literacy sessions for primary school pupils and accompanying elderly citizens at the National Orchid Garden, my work outside the classroom defines my purpose: <b>bridging gaps in access and equity</b>.
+            Organizing the national-level <b>Disability Awareness and Experiential Carnival</b> taught me that true leadership lies in creating inclusive spaces through logistics and empathy. Whether tutoring children in literacy or accompanying the elderly at the National Orchid Garden, I strive to bridge gaps in accessibility.
           </p>
           <p>
-            Currently serving full-time <b>National Service (ORD: 2 Feb 2027)</b>, I am honing operational resilience, adaptability, and high-stakes teamwork. Upon matriculating into <b>NUS Computer Science in AY2027</b>, I aim to merge high-performance computing, data science, and AI systems to create tangible public good for Singapore and the global community.
+            Currently serving full-time <b>National Service (ORD: 2 Feb 2027)</b>, I aim to leverage my technical expertise and the discipline gained through military service to develop innovative solutions for social good. I am committed to a career where excellence in STEM directly empowers the community, ensuring that progress is accessible to everyone.
           </p>
         </div>
       </div>
@@ -1096,7 +1102,7 @@
                 <tr>
                   <td>Chinese Language</td>
                   <td><span class="level-tag" style="color:var(--neon-yellow);">O-Level</span></td>
-                  <td><span class="grade-badge-b">A2 (Oral/Aural: Dist)</span></td>
+                  <td><span class="grade-badge-b">A2 (Oral: Dist)</span></td>
                 </tr>
               </tbody>
             </table>
@@ -1167,18 +1173,18 @@
                 <i class="bi bi-heart-pulse-fill"></i>
               </div>
               <div>
-                <h3 class="card-heading">Disability Awareness &amp; Experiential Carnival</h3>
-                <span class="card-sub" style="color:var(--neon-magenta)">Lead Organizer &amp; Simulation Designer · Boon Lay CC (50 Hours VIA)</span>
+                <h3 class="card-heading">Disability Awareness and Experiential Carnival</h3>
+                <span class="card-sub" style="color:var(--neon-magenta)">Leadership, Innovation, and National-Level Project Management · Boon Lay CC</span>
               </div>
             </div>
             <span class="tag-mono">National-Level Community Impact</span>
           </div>
           <div class="exp-body">
             <p>
-              As an organizer for the national-level <b>Disability Awareness and Experiential Carnival</b> ("Beyond the Limits") at Boon Lay Community Club, I spearheaded the design of interactive, hands-on simulations that moved beyond passive awareness to foster genuine <b>empathy, understanding, and inclusivity</b>.
+              As an organizer for the national-level <b>Disability Awareness and Experiential Carnival</b> at Boon Lay Community Club, I demonstrated <b>innovation, adaptability, and resilience</b> by designing interactive, hands-on activities that moved beyond passive awareness to foster genuine <b>empathy, understanding, and inclusivity</b>. My team and I developed experiential simulations—such as navigating spaces blindfolded, communicating without speaking, and playing wheelchair soccer—allowing participants to step into the shoes of disabled individuals and experience firsthand the physical and emotional barriers they encounter daily.
             </p>
             <p>
-              My team developed experiential challenges—including blindfolded obstacle navigation, non-verbal communication stations, and wheelchair soccer—enabling participants to directly encounter and appreciate the physical and emotional barriers faced daily by disabled individuals. Meticulously oversaw <b>logistics, manpower planning, and inter-agency coordination</b> with Boon Lay CC and voluntary welfare organizations.
+              To ensure <b>excellence</b>, I meticulously oversaw <b>logistics, manpower, and resources</b>, maintaining <b>integrity</b> through open communication with external partners and effective <b>collaboration</b> with the Boon Lay Community Club to navigate planning challenges. This project successfully sparked action, inspiring participants to promote <b>accessibility</b> and create inclusive spaces where everyone feels <b>valued</b>. Ultimately, balancing these responsibilities with other commitments sharpened my time management, solidifying my dedication to equitable treatment and the creation of fair, supportive communities.
             </p>
           </div>
         </div>
@@ -1191,18 +1197,18 @@
                 <i class="bi bi-gear-fill"></i>
               </div>
               <div>
-                <h3 class="card-heading">BorgWarner Engineering Internship</h3>
-                <span class="card-sub">MOE ETPS Work Attachment Programme · BorgWarner Inc.</span>
+                <h3 class="card-heading">Professional Internship: BorgWarner</h3>
+                <span class="card-sub">Core Duties, Team Collaboration, and Technical Problem-Solving</span>
               </div>
             </div>
             <span class="tag-mono">Corporate Engineering Exposure</span>
           </div>
           <div class="exp-body">
             <p>
-              Completed an engineering work attachment with global automotive and e-mobility technology leader <b>BorgWarner Inc.</b> under the MOE Engineering &amp; Technology Programme. Collaborated within multidisciplinary engineering teams, observing and evaluating manufacturing and diagnostic protocols.
+              During my internship at <b>BorgWarner</b>, I developed crucial 21st-century competencies like collaboration and communication skills. Working with a cross-functional team, I learned about the importance of fostering open communication and active listening among team members. The collaborative approach allowed us to find effective solutions and improve our processes. I helped address process inefficiencies by fostering open communication and encouraging active listening among team members.
             </p>
             <p>
-              Developed essential 21st-century workplace competencies, including active listening, root-cause process analysis, and inter-departmental communication. Gained direct appreciation for how technical precision, reliability, and human collaboration interface in production systems.
+              I learned that success depends not just on technical expertise, but also on the ability to work well with others and build trust. I took part in BorgWarner's engineering internship where I learned about the engineering processes, worked with mentors, and improved my problem-solving skills. These experiences have shown me how vital teamwork and clear communication are in professional environments where collaboration among professionals is essential for providing the best results.
             </p>
           </div>
         </div>
@@ -1215,18 +1221,18 @@
                 <i class="bi bi-book-half"></i>
               </div>
               <div>
-                <h3 class="card-heading">Reading Wonders Literacy Programme</h3>
-                <span class="card-sub" style="color:var(--neon-yellow)">Primary 1 Student Reading Mentor · SG CARES @ Boon Lay / West Grove Primary School</span>
+                <h3 class="card-heading">Reading Wonders</h3>
+                <span class="card-sub" style="color:var(--neon-yellow)">Literacy Mentorship &amp; Equal Opportunity · West Grove Primary School</span>
               </div>
             </div>
             <span class="tag-mono">Educational Equity VIA</span>
           </div>
           <div class="exp-body">
             <p>
-              Guided by a commitment to educational equal opportunity, led literacy intervention sessions for Primary 1 pupils facing reading and comprehension hurdles.
+              Driven by a commitment to <b>equal opportunity</b>, I led a literacy program for Primary 1 students at West Grove Primary School who were struggling with reading. I realized that education is the ultimate <b>door-opener</b>, so I used a <b>flexible teaching style</b>—using pictures and storytelling to match each child’s interests.
             </p>
             <p>
-              Adopted a flexible, student-centered approach—incorporating contextual storytelling and visual prompts matched to each child's pace. Learned that celebrating small wins builds genuine self-agency and academic confidence.
+              This experience taught me the true meaning of <b>kindness and patience</b>; I learned that celebrating <b>small wins</b>, like a student decoding their first sentence, is the key to <b>building confidence</b>. Beyond just teaching skills, I saw how education gives children the <b>agency</b> to succeed. This work strengthened my <b>adaptability</b> and my desire to use <b>compassionate leadership</b> to ensure every individual has the support they need to reach their full potential.
             </p>
           </div>
         </div>
@@ -1239,18 +1245,18 @@
                 <i class="bi bi-people-fill"></i>
               </div>
               <div>
-                <h3 class="card-heading">Project Reminiscence (Elderly Outreach)</h3>
-                <span class="card-sub" style="color:var(--neon-green)">National Orchid Garden Outings · SAGE Counselling Centre</span>
+                <h3 class="card-heading">Project Reminiscence</h3>
+                <span class="card-sub" style="color:var(--neon-green)">Community Service &amp; Elderly Well-Being · SAGE Counselling Centre</span>
               </div>
             </div>
             <span class="tag-mono">Senior Mental Health &amp; Inclusivity</span>
           </div>
           <div class="exp-body">
             <p>
-              Partnered with volunteers from <b>SAGE Counselling Centre</b> to coordinate and facilitate curated excursions to the National Orchid Garden for senior citizens.
+              Through my involvement in <b>Project Reminiscence</b>, I spearheaded outings to the National Orchid Garden for elderly individuals, effectively merging my passion for <b>community service</b> with a dedicated focus on promoting <b>physical, mental, and social well-being</b>. By coordinating closely with volunteers from the <b>SAGE Counselling Centre</b>, I honed critical <b>leadership and communication skills</b> while ensuring every participant felt comfortable and deeply engaged.
             </p>
             <p>
-              Assisted seniors with mobility challenges, attentively navigating wheelchair ramps and engaging in supportive, intergenerational conversations. Experienced firsthand how meaningful community connection and accessibility directly enhance holistic mental and emotional well-being.
+              This hands-on experience provided a profound understanding of <b>holistic care</b>, as I assisted those with <b>mobility challenges</b> by navigating wheelchairs across slopes and offering constant reassurance. Witnessing how meaningful <b>social interaction and inclusivity</b> directly uplift <b>mental and emotional health</b> has reinforced my <b>empathy and commitment to supporting the well-being of others</b>. These rewarding interactions—centered on listening to their stories, sharing conversations, and fostering connections with nature—upheld a culture of inclusivity and strengthened my resolve to pursue a career where I can continue to <b>improve lives through compassionate, comprehensive service</b>.
             </p>
           </div>
         </div>
@@ -1264,17 +1270,20 @@
               </div>
               <div>
                 <h3 class="card-heading">Co-Curricular Leadership &amp; Creative Communication</h3>
-                <span class="card-sub" style="color:#d8b4fe">RVHS Editorial Club &amp; BPGHS Chinese Orchestra</span>
+                <span class="card-sub" style="color:#d8b4fe">Editorial Club &amp; Chinese Orchestra (CO)</span>
               </div>
             </div>
             <span class="tag-mono">Institutional Leadership</span>
           </div>
           <div class="exp-body">
             <p>
-              <b>RVHS Editorial Club (Webmaster):</b> Managed the digital infrastructure and online publication portal of the school media team. Conducted interviews for milestone events (Teachers' Day, RVmun, YLEAD), collaborating across diverse CCAs to synthesize compelling community narratives.
+              <b>Chinese Orchestra (BPGHS):</b> As a dedicated member of the BPGHS Chinese Orchestra, I consistently demonstrated my passion for Chinese orchestral music through active participation and commitment. Despite initial setbacks, including the challenge of learning a new instrument and mastering musical scores from scratch, I did not make the cut after my first audition for the Singapore Youth Festival (SYF) Arts Presentation 2021 team. Rather than allowing this to discourage me, I treated it as an opportunity for growth, dedicating myself to disciplined practice and proactively seeking guidance from seniors to refine my technique, strengthen my instrument mastery, and improve my ability to synchronise with the ensemble. Through perseverance and determination, I successfully re-auditioned and became an integral member of the team.
             </p>
             <p>
-              <b>BPGHS Chinese Orchestra (EXCO &amp; Section Leader):</b> Overcame initial audition setbacks through disciplined individual practice and senior mentorship, subsequently leading the section to achieve a <b>Certificate of Distinction</b> at the Singapore Youth Festival (SYF) Arts Presentation 2021.
+              Beyond my personal progress, I also contributed meaningfully as an EXCO member, where I played a key role in fostering teamwork and encouraging my peers to work towards shared goals. I actively participated in numerous school performances, including the annual Chinese New Year and Mid-Autumn Festival celebrations, Open House showcases, and the CCA Roadshow, further demonstrating my commitment to the orchestra. This journey of resilience and leadership, together with the collective efforts of the team, culminated in us achieving a <b>Certificate of Distinction at the SYF Arts Presentation</b>. Through this experience, I not only deepened my appreciation for music but also strengthened my resilience, adaptability, and ability to collaborate effectively under pressure.
+            </p>
+            <p style="margin-top:0.8rem;">
+              <b>Editorial Club (RVHS):</b> As a member of the school media team, I wrote articles about school events such as Teachers’ Day, RVmun, and YLEAD. I conducted interviews with many people and participated in these events to gain personal insights. I also collaborated with various CCAs, such as Venture Scouts and HACAs, to publish their articles, forming new connections and improving my writing skills in the process. I learned new writing techniques to make articles interesting and gained communication skills to ensure interviewees felt comfortable during interviews. Through this experience, I learned 21st-century competencies such as self-awareness, self-management, responsible decision-making, and social awareness. Interviewing involved empathetic listening and understanding others’ perspectives and experiences. I learned when to be quiet and when to ask questions, developing empathy, cultural sensitivity, and a broader worldview essential for building strong relationships, resolving conflicts, and collaborating effectively with diverse groups. Crafting insightful questions and analysing responses enhanced my critical thinking skills, enabling me to evaluate information, identify patterns, and draw conclusions more effectively. Through my CCA involvement, I overcame my lack of confidence and communication challenges, becoming a more sociable and friendlier person.
             </p>
           </div>
         </div>
@@ -1282,7 +1291,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         06. AWARDS & HONORS (CHRONOLOGICAL: NEWEST TOP)
+         06. AWARDS & HONORS (GROUPED BY AWARD NAME, CHRONOLOGICAL DESCENDING)
          ═══════════════════════════════════════════════ -->
     <section id="awards">
       <div class="section-header">
@@ -1291,186 +1300,144 @@
       </div>
 
       <div class="awards-container">
-        <!-- 2024 -->
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-award-fill" style="color:var(--neon-cyan)"></i>
-            <div>
-              <h4>MOE Engineering &amp; Technology Programme Scholarship (ETPS)</h4>
-              <p>Ministry of Education Singapore · Awarded for outstanding academic &amp; co-curricular achievements in science</p>
+        <!-- 1. ETPS -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-award-fill" style="color:var(--neon-cyan)"></i>
+              <h4>MOE Engineering &amp; Tech Programme Scholarship (ETPS)</h4>
             </div>
+            <span class="award-years-tag" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2023, 2024</span>
           </div>
-          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2024</span>
+          <p class="award-desc-text">
+            I received the Engineering and Tech Programme (ETPS) Scholarship from the Ministry of Education (MOE), recognizing my excellence in Math and Science and my aptitude for cross-disciplinary, hands-on learning. This prestigious award affirms my analytical skills, problem-solving ability, and perseverance in tackling challenging academic pursuits. It has further strengthened my passion for engineering, where I can apply scientific knowledge to address real-world challenges. Ultimately, receiving this scholarship humbles me and reinforces my commitment to improving people's lives through innovation and technical excellence.
+          </p>
         </div>
 
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
-            <div>
+        <!-- 2. Edusave Academic Achievement -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
               <h4>Edusave Certificate of Academic Achievement</h4>
-              <p>Ministry of Education Singapore &amp; People's Association · Pre-U 2, River Valley High School</p>
             </div>
+            <span class="award-years-tag">2021, 2022, 2023, 2024</span>
           </div>
-          <span class="award-year">2024</span>
+          <p class="award-desc-text">
+            Receiving the Edusave Certificate of Academic Achievement for consecutive years reflects my unwavering determination, discipline, and dedication. This consistent academic excellence demonstrates my ability to persevere through challenges, master complex concepts, and maintain high standards. My commitment to lifelong learning and self-improvement fuels my passion for excellence, where resilience and continuous growth are crucial. Just as I have pushed myself to excel academically, I am eager to apply this same drive to my future studies and professional endeavors, ensuring I make a meaningful impact in my chosen field.
+          </p>
         </div>
 
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-star-fill" style="color:var(--neon-green)"></i>
-            <div>
+        <!-- 3. Woodgrove CCC - North West CDC -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-star-fill" style="color:var(--neon-green)"></i>
               <h4>Woodgrove CCC - North West CDC Education Merit Award</h4>
-              <p>People's Association &amp; North West Community Development Council · Pre-U 2</p>
             </div>
+            <span class="award-years-tag" style="color:var(--neon-green);border-color:var(--neon-green)">2023, 2024</span>
           </div>
-          <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2024</span>
+          <p class="award-desc-text">
+            Conferred by the People's Association and North West Community Development Council in Pre-U 1 (2023) and Pre-U 2 (2024) in recognition of outstanding academic merit, community engagement, and consistent educational excellence.
+          </p>
         </div>
 
-        <!-- 2023 -->
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-award-fill" style="color:var(--neon-cyan)"></i>
-            <div>
-              <h4>MOE Engineering &amp; Technology Programme Scholarship (ETPS)</h4>
-              <p>Ministry of Education Singapore · Awarded for outstanding academic &amp; co-curricular achievements in science</p>
-            </div>
-          </div>
-          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2023</span>
-        </div>
-
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
-            <div>
-              <h4>Edusave Certificate of Academic Achievement</h4>
-              <p>Ministry of Education Singapore &amp; People's Association · Pre-U 1, River Valley High School</p>
-            </div>
-          </div>
-          <span class="award-year">2023</span>
-        </div>
-
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-star-fill" style="color:var(--neon-green)"></i>
-            <div>
-              <h4>Woodgrove CCC - North West CDC Education Merit Award</h4>
-              <p>People's Association &amp; North West Community Development Council · Pre-U 1</p>
-            </div>
-          </div>
-          <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2023</span>
-        </div>
-
-        <!-- 2022 -->
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-shield-check" style="color:var(--neon-magenta)"></i>
-            <div>
+        <!-- 4. NYAA -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-shield-check" style="color:var(--neon-magenta)"></i>
               <h4>National Youth Achievement Award (NYAA) — Bronze Medal</h4>
-              <p>National Youth Achievement Award Council Singapore · Community leadership, physical endurance, and personal mastery</p>
             </div>
+            <span class="award-years-tag" style="color:var(--neon-magenta);border-color:var(--neon-magenta)">2022</span>
           </div>
-          <span class="award-year" style="color:var(--neon-magenta);border-color:var(--neon-magenta)">2022</span>
+          <p class="award-desc-text">
+            Awarded by the National Youth Achievement Award Council Singapore for sustained personal qualities of leadership, community service initiative, self-reliance, and physical endurance across multi-month milestones.
+          </p>
         </div>
 
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
-            <div>
-              <h4>Edusave Certificate of Academic Achievement</h4>
-              <p>Ministry of Education Singapore &amp; People's Association · Secondary 4, Bukit Panjang Govt. High School</p>
-            </div>
-          </div>
-          <span class="award-year">2022</span>
-        </div>
-
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
-            <div>
+        <!-- 5. ICAS Science -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
               <h4>ICAS Assessments for Science — Merit Certificate</h4>
-              <p>UNSW Global · Secondary 4 &amp; 5, Bukit Panjang Govt. High School</p>
             </div>
+            <span class="award-years-tag" style="color:var(--neon-purple);border-color:var(--neon-purple)">2022</span>
           </div>
-          <span class="award-year" style="color:var(--neon-purple);border-color:var(--neon-purple)">2022</span>
+          <p class="award-desc-text">
+            Conferred by UNSW Global in Secondary 4 &amp; 5 for higher-order scientific inquiry, empirical data interpretation, and advanced scientific reasoning.
+          </p>
         </div>
 
-        <!-- 2021 -->
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-music-note-beamed" style="color:var(--neon-green)"></i>
-            <div>
+        <!-- 6. SYF Arts Presentation -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-music-note-beamed" style="color:var(--neon-green)"></i>
               <h4>Singapore Youth Festival (SYF) Arts Presentation — Certificate of Distinction</h4>
-              <p>Ministry of Education Singapore · Chinese Orchestra, Bukit Panjang Govt. High School</p>
             </div>
+            <span class="award-years-tag" style="color:var(--neon-green);border-color:var(--neon-green)">2021</span>
           </div>
-          <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2021</span>
+          <p class="award-desc-text">
+            Conferred by the Ministry of Education Singapore upon the BPGHS Chinese Orchestra. Represented the school as an Executive Committee member and section leader following dedicated technical preparation and disciplined ensemble synchronization.
+          </p>
         </div>
 
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
-            <div>
-              <h4>Edusave Certificate of Academic Achievement</h4>
-              <p>Ministry of Education Singapore &amp; People's Association · Secondary 3, Bukit Panjang Govt. High School</p>
-            </div>
-          </div>
-          <span class="award-year">2021</span>
-        </div>
-
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-graph-up-arrow" style="color:var(--neon-cyan)"></i>
-            <div>
+        <!-- 7. Edusave Good Progress Award -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-graph-up-arrow" style="color:var(--neon-cyan)"></i>
               <h4>Edusave Good Progress Award</h4>
-              <p>Ministry of Education Singapore &amp; People's Association · Secondary 3, Bukit Panjang Govt. High School</p>
             </div>
+            <span class="award-years-tag" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2020, 2021</span>
           </div>
-          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2021</span>
+          <p class="award-desc-text">
+            Awarded by the Ministry of Education Singapore in Secondary 2 (2020) and Secondary 3 (2021) in recognition of significant academic improvement and strong determination to excel.
+          </p>
         </div>
 
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
-            <div>
+        <!-- 8. ICAS English -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
               <h4>ICAS Assessments for English — Credit Certificate</h4>
-              <p>UNSW Global · Secondary 3, Bukit Panjang Govt. High School</p>
             </div>
+            <span class="award-years-tag" style="color:var(--neon-purple);border-color:var(--neon-purple)">2021</span>
           </div>
-          <span class="award-year" style="color:var(--neon-purple);border-color:var(--neon-purple)">2021</span>
+          <p class="award-desc-text">
+            Awarded by UNSW Global in Secondary 3 for reading comprehension, text analysis, vocabulary mastery, and linguistic precision.
+          </p>
         </div>
 
-        <!-- 2020 -->
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-graph-up-arrow" style="color:var(--neon-cyan)"></i>
-            <div>
-              <h4>Edusave Good Progress Award</h4>
-              <p>Ministry of Education Singapore &amp; People's Association · Secondary 2, Bukit Panjang Govt. High School</p>
+        <!-- 9. Australian Mathematics Competition -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-calculator" style="color:var(--neon-yellow)"></i>
+              <h4>Australian Mathematics Competition — Certificate of Distinction</h4>
             </div>
+            <span class="award-years-tag">2019</span>
           </div>
-          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2020</span>
+          <p class="award-desc-text">
+            Achieving a Distinction in the Australian Mathematics Competition highlights my strong analytical thinking, problem-solving skills, and ability to apply critical and higher-order thinking. Just as mathematics requires logical reasoning and attention to detail, complex projects demand advanced problem-solving and strategic decision-making. This achievement reflects my ability to approach multifaceted challenges methodically, think critically, and synthesize information to find effective solutions. I am eager to apply this intellectual rigor and perseverance to my future studies, where critical thinking and higher-order problem-solving are essential for driving impactful outcomes and addressing real-world challenges.
+          </p>
         </div>
 
-        <!-- 2019 -->
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-calculator" style="color:var(--neon-yellow)"></i>
-            <div>
-              <h4>Australian Mathematics Competition (AMC) — Certificate of Distinction</h4>
-              <p>Australian Maths Trust · Junior Division (Year 7), Bukit Panjang Government High School</p>
-            </div>
-          </div>
-          <span class="award-year">2019</span>
-        </div>
-
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-globe-americas" style="color:var(--neon-green)"></i>
-            <div>
+        <!-- 10. UNSW Global REACH Science -->
+        <div class="award-card">
+          <div class="award-header-row">
+            <div class="award-title-wrap">
+              <i class="bi bi-globe-americas" style="color:var(--neon-green)"></i>
               <h4>UNSW Global REACH Assessments in Science — Exemplary Certificate</h4>
-              <p>University of New South Wales · Top 1% of participants in Singapore, Secondary 1</p>
             </div>
+            <span class="award-years-tag" style="color:var(--neon-green);border-color:var(--neon-green)">2019</span>
           </div>
-          <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2019</span>
+          <p class="award-desc-text">
+            Achieving an Exemplary award in the UNSW Global REACH Assessments in Science demonstrates my strong grasp of scientific concepts and my ability to think critically and analytically (awarded for being in the top 1 per cent of participants in Singapore). This recognition reflects not only my dedication to mastering scientific knowledge but also my ability to apply higher-order thinking to complex problems—skills that are crucial for tackling rigorous academic and professional challenges. Just as science demands precision and innovation, success in high-pressure environments requires a similar level of expertise and problem-solving ability. I am confident that this foundation in science will serve as a strong basis for my future endeavors, where critical thinking and a deep understanding of scientific principles are essential for driving meaningful progress and delivering impactful results.
+          </p>
         </div>
       </div>
     </section>
@@ -1493,17 +1460,32 @@
         </button>
       </div>
 
-      <!-- RVHS Testimonial -->
+      <!-- RVHS Testimonial (Exact Verbatim Copy from Source) -->
       <div id="panel-rvhs" class="cyber-card testimonial-panel active">
         <div class="quote-box">
           <p>
-            Lim Jun Chuan was a student of River Valley High School's Junior College section from 2023 to 2024. He offered Physics, Chemistry, Mathematics, and Economics at H2 level, and General Paper, Chinese and Project Work at H1 level for the Cambridge General Certificate of Education Advanced Level Examination.
+            Lim Jun Chuan was a student of River Valley High School’s Junior College section from 2023 to 2024. He offered Physics, Chemistry, Mathematics, and Economics at H2 level, and General Paper, Chinese and Project Work at H1 level for the Cambridge General Certificate of Education Advanced Level Examination.
           </p>
           <p>
-            Jun Chuan embodies one of the 21st century competencies as a critical thinker. He is a thoughtful and creative individual who thrives when he is challenged to look at issues and problems from multiple perspectives... When tasked to analyse the various uses and inner workings of satellites, Jun Chuan carried his research into the area of satellites, giving greater breadth of perspective by studying how satellite technology and space exploration were influenced by this event.
+            Jun Chuan embodies one of the 21st century competencies as a critical thinker. He is a thoughtful and creative individual who thrives when he is challenged to look at issues and problems from multiple perspectives. This was translated in the way he approached the study of Physics, one of his favourite subjects. When tasked to analyse the various uses and inner workings of satellites, Junchuan carried his research into the area of satellites, giving greater breadth of perspective by studying how satellite technology and space exploration were influenced by this event.
           </p>
           <p>
-            When he joined a new project team to design satellites with unfamiliar team members, he quickly adapted by actively listening to his group mates, seeking to understand their perspectives, ideas, and concerns, learning from their expertise, and adjusting his approach to maximise teamwork and productivity. This active listening not only helped Jun Chuan grasp the collective knowledge and experience of the team but also allowed him to build rapport and trust with his teammates.
+            Jun Chuan found it challenging to understand and grasp complex academic concepts, especially in subjects like general paper. This difficulty stemmed from the need to stay informed about daily news and understand multiple perspectives to succeed. To overcome this obstacle, he sought additional help from teachers, tutors, and classmates to clarify concepts. He has also dedicated more time to studying, breaking down complex topics into smaller parts, and utilising various learning resources such as videos, textbooks, and online courses. Jun Chuan started reading every day and set aside specific time for improvement. Through persistence and effort, he has improved his understanding and mastery of general paper.
+          </p>
+          <p>
+            Jun Chuan has a special interest in chemistry due to its role in explaining the composition, structure, properties, and transformations of matter. He is fascinated by the interdisciplinary nature of chemistry, bridging concepts from physics and biology, which opens up a wide range of applications. Jun Chuan has delved into various branches of chemistry, including organic, inorganic, physical, and analytical chemistry, to broaden his understanding of the subject. He has also explored the role of chemistry in everyday life, such as studying environmental chemistry and medicinal chemistry. Jun Chuan participated in the NUS Medicine Exposure Programme to gain a deeper understanding of medicine and its chemistry.
+          </p>
+          <p>
+            Jun Chuan has written several articles about school events, such as Teachers' Day, RVmun, and Ylead. He conducted interviews with many people and participated in these events to gain personal insights. Jun Chuan also collaborated with various CCAs, such as Venture Scouts and HACAs, to publish their articles, forming new connections and improving his writing skills in the process. He learned new writing techniques to make articles interesting and gained communication skills to ensure interviewees felt comfortable during interviews. Through this experience, Jun Chuan learned 21st-century competencies such as self-awareness, self-management, responsible decision-making, and social awareness. Interviewing involved empathetic listening and understanding others' perspectives and experiences. He learned when to be quiet and when to ask questions, developing empathy, cultural sensitivity, and a broader worldview essential for building strong relationships, resolving conflicts, and collaborating effectively with diverse groups. Crafting insightful questions and analysing responses enhanced his critical thinking skills, enabling him to evaluate information, identify patterns, and draw conclusions more effectively. Through his CCA involvement, Jun chuan overcame their lack of confidence and communication challenges, becoming a more sociable and friendlier person.
+          </p>
+          <p>
+            Jun Chuan is good at adapting to new environments and situations and communicating with others, allowing him to thrive in challenging settings. When he joined a new project team to design satellites with unfamiliar team members, he quickly adapted by actively listening to their group mates, seeking to understand their perspectives, ideas, and concerns, learning from their expertise, and adjusting their approach to maximise teamwork and productivity. This active listening not only helped Jun chuan grasp the collective knowledge and experience of the team but also allowed them to build rapport and trust with their teammates.
+          </p>
+          <p>
+            Jun Chuan struggled with self-doubt and a lack of confidence in their abilities. To overcome this, he engaged in self-improvement activities such as seeking feedback from mentors and practising positive self-talk. Over time, Jun Chuan developed a stronger sense of confidence in himself and his capabilities, allowing him to take on new challenges with courage.
+          </p>
+          <p>
+            Jun Chuan's core belief in respect emphasises treating everyone with dignity, fairness, and understanding, regardless of social status, ethnicity, or beliefs as he believes that each person has a unique perspective, experiences, and contributions to offer. He values engaging in meaningful dialogue, listening openly, and respecting differing viewpoints, emphasising kindness and empathy. Jun Chuan believes that respect is crucial for creating inclusive communities where everyone can thrive equally.
           </p>
         </div>
         <p style="font-family:var(--font-mono);font-size:0.88rem;color:var(--neon-cyan)">
@@ -1511,29 +1493,29 @@
         </p>
       </div>
 
-      <!-- BPGHS Testimonial (Exact Text from PDF) -->
+      <!-- BPGHS Testimonial (Exact Verbatim Copy from Source) -->
       <div id="panel-bpghs" class="cyber-card testimonial-panel">
         <div class="quote-box">
           <p>
             Lim Jun Chuan was a student of Bukit Panjang Government High School from 2019 to 2022, where he pursued the four-year Singapore Cambridge GCE O-Level course in the Express stream.
           </p>
           <p>
-            Jun Chuan is a hardworking, conscientious and motivated pupil. He shows avid interest in his work and is keen to learn. His positive learning attitude is evident in his inquiring nature and asking questions when he is in doubt. With self-discipline, Jun Chuan has made outstanding progress in his academic pursuit. A self-directed learner, he maintained excellent grades in all subjects. His amiable nature allows him to work well with others. In group work, Jun Chuan respects others' viewpoints and is a good team player. He is caring towards others and readily extends a helping hand to his peers.
+            Jun Chuan is a hardworking, conscientious, and motivated pupil. He shows an avid interest in his work and is keen to learn. His positive learning attitude is evident in his inquisitive nature and his willingness to ask questions whenever he is in doubt. With strong self-discipline, Jun Chuan has made outstanding progress in his academic pursuits. As a self-directed learner, he has maintained excellent grades across all subjects. His amiable nature allows him to work well with others. In group settings, Jun Chuan respects differing viewpoints and demonstrates that he is a reliable and cooperative team player. He is also caring towards others and readily extends a helping hand to his peers.
           </p>
           <p>
-            Jun Chuan showed great proficiency and talent in Mathematics and Science. He is a perceptive and sharp individual with a drive to understand how things work. His ability to analyze and solve mathematical problems was evident in the numerous academic competitions that he had taken part in. He participated in the Australian Mathematics Competition organized by the Australian Maths Trust (AMT) in 2019 and achieved a Certificate of Distinction. He also participated in the University of New South Wales Global Reach Assessments for Science in 2019 and achieved an Exemplary Certificate for being in the top 1 per cent of participants for the year in Singapore. In addition to that, he took part in the ICAS Assessments for English in 2021 and achieved a Credit Certificate. His academic achievements are evident in the academic awards he has received. In 2020, he attained the Edusave Good Progress Award. In 2021, he was awarded the Edusave Certificate of Academic Achievement and the Edusave Good Progress Award.
+            Jun Chuan has shown great proficiency and talent in Mathematics and Science. He is a perceptive and sharp individual with a strong drive to understand how things work. His ability to analyse and solve mathematical problems is evident in the numerous academic competitions he has participated in. In 2019, he took part in the Australian Mathematics Competition organised by the Australian Maths Trust (AMT) and achieved a Certificate of Distinction. In the same year, he also participated in the University of New South Wales Global Reach Assessments for Science, where he was awarded an Exemplary Certificate for being in the top 1 per cent of participants in Singapore. In addition, he participated in the ICAS Assessments for English in 2021 and achieved a Credit Certificate. His academic excellence is further reflected in the awards he has received. In 2020, he attained the Edusave Good Progress Award. In 2021, he was awarded both the Edusave Certificate of Academic Achievement and the Edusave Good Progress Award.
           </p>
           <p>
             In his Co-Curricular Activity (CCA), Jun Chuan was a dedicated member of the BPGHS Chinese Orchestra (CO). He was selected to represent the school in the Singapore Youth Festival (SYF) Arts Presentation 2021 where the CO achieved a Certificate of Distinction. Having a strong love for the Chinese orchestral music, he participated actively in numerous school performances by the CO, like the annual Chinese New Year and Mid-Autumn Festival celebrations, Open House performances as well as the annual CCA Roadshow.
           </p>
           <p>
-            Despite his heavy academic and CCA commitments, Jun Chuan recognized the importance of contributing to the community so he participated in various Values-In-Action (VIA) activities over the years. In 2019, as a member of the VIA committee of his class, he helped organize and carried out activities to engage the elderly at the MWS Bethany Nursing Home. In 2020, he participated in the Keep the School Clean 2020 Project. Furthermore, in 2021, he actively participated in the Chinese New Year Project Prosperity. In 2022, together with his classmates, he helped plan and organise a Student-Initiated Activity (SIA) where they worked with NParks in the "One Million Trees" project and planted trees in the Choa Chu Kang Park.
+            Despite his heavy academic and CCA commitments, Jun Chuan recognized the importance of contributing to the community so he participated in various Values-In-Action (VIA) activities over the years. In 2019, as a member of the VIA committee of his class, he helped organize and carried out activities to engage the elderly at the MWS Bethany Nursing Home. In 2020, he participated in the Keep the School Clean 2020 Project. Furthermore, in 2021, he actively participated in the Chinese New Year Project Prosperity. In 2022, together with his classmates, Jun Chuan played an active role in planning and organising a Student-Initiated Activity (SIA), where he collaborated with NParks on the “One Million Trees” project and participated in tree planting at Choa Chu Kang Park.
           </p>
           <p>
-            Jun Chuan attended the Secondary 1 School Leadership Programme (SLD) organized by the school. He also completed a module on leadership in 2019. These opportunities had helped hone his leadership competencies and enabled him to better lead others. Eager to contribute to the school community, Jun Chuan represented his class in the Secondary 1 Inter-Class Games 2019 and the School Sports Carnival 2019.
+            He also attended the Secondary 1 School Leadership Programme (SLD) organised by the school and completed a leadership module in 2019. These experiences have helped to develop his leadership competencies and enabled him to lead others more effectively. Eager to contribute to the school community, Jun Chuan represented his class in the Secondary 1 Inter-Class Games 2019 and the School Sports Carnival 2019.
           </p>
           <p>
-            Jun Chuan is a driven and curious student, and has demonstrated leadership qualities. His personal traits and qualities should stand him in good stead in achieving success in his future endeavours.
+            Jun Chuan is a driven and curious student who has demonstrated strong leadership qualities. His personal traits and character will undoubtedly stand him in good stead as he continues to pursue success in his future endeavours.
           </p>
         </div>
         <p style="font-family:var(--font-mono);font-size:0.88rem;color:var(--neon-cyan)">
