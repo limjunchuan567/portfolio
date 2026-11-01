@@ -232,7 +232,7 @@
       color: #fff;
     }
 
-    /* Mobile hamburger */
+    /* Mobile toggle */
     .mobile-toggle {
       display: none;
       background: none;
@@ -528,6 +528,11 @@
       text-shadow: 0 0 10px rgba(0, 245, 155, 0.4);
     }
 
+    .grade-badge-b {
+      color: var(--neon-cyan);
+      font-weight: 700;
+    }
+
     .level-tag {
       color: var(--neon-magenta);
       font-weight: 700;
@@ -603,7 +608,7 @@
     }
 
     /* ============================================================
-       AWARDS LIST (INTERACTIVE CYBER ACCORDION/LIST)
+       AWARDS LIST (CHRONOLOGICAL ORDER: NEWEST FIRST)
        ============================================================ */
     .awards-container {
       display: flex;
@@ -664,7 +669,7 @@
     }
 
     /* ============================================================
-       TESTIMONIALS (TABS)
+       SCHOOL TESTIMONIALS (TABS)
        ============================================================ */
     .testimonial-tabs {
       display: flex;
@@ -720,8 +725,16 @@
       border-left: 4px solid var(--neon-cyan);
       padding-left: 1.4rem;
       margin-bottom: 1.2rem;
-      font-style: italic;
       color: var(--muted-bright);
+      line-height: 1.8;
+    }
+
+    .quote-box p {
+      margin-bottom: 0.8rem;
+    }
+
+    .quote-box p:last-child {
+      margin-bottom: 0;
     }
 
     /* ============================================================
@@ -858,7 +871,7 @@
       </p>
 
       <div class="hero-badges">
-        <span class="badge-pill cyan"><i class="bi bi-patch-check-fill"></i> MOE ETPS Scholar</span>
+        <span class="badge-pill cyan"><i class="bi bi-patch-check-fill"></i> MOE ETPS Scholar (2023, 2024)</span>
         <span class="badge-pill green"><i class="bi bi-shield-fill"></i> Full-Time NS (ORD 2 Feb 2027)</span>
         <span class="badge-pill yellow"><i class="bi bi-mortarboard-fill"></i> 87.75 Rank Points (A-Levels)</span>
         <span class="badge-pill magenta"><i class="bi bi-code-slash"></i> Python &amp; C++</span>
@@ -881,7 +894,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         02. ABOUT & PHILOSOPHY
+         02. ABOUT & MISSION
          ═══════════════════════════════════════════════ -->
     <section id="about">
       <div class="section-header">
@@ -940,7 +953,7 @@
         </div>
         <div class="exp-body">
           <p>
-            Admitted to the premier <b>NUS School of Computing</b>. Specialization interests include <b>Artificial Intelligence &amp; Machine Learning</b>, <b>Data Science &amp; Analytics</b>, and <b>Computer Graphics</b>.
+            Admitted to the premier <b>NUS School of Computing</b>. Specialization interests include <b>Artificial Intelligence</b>, <b>Machine Learning</b>, and <b>Data Science</b>.
           </p>
         </div>
       </div>
@@ -961,7 +974,7 @@
         </div>
         <div class="exp-body">
           <p>
-            Demonstrated sustained academic excellence across rigorous STEM and humanities subjects, attaining distinctions across all 4 H2 subjects:
+            Singapore-Cambridge General Certificate of Education Advanced Level Examination results:
           </p>
           <div class="results-table-wrap">
             <table class="cyber-table">
@@ -970,7 +983,6 @@
                   <th>Subject</th>
                   <th>Level</th>
                   <th>Grade</th>
-                  <th>Description</th>
                 </tr>
               </thead>
               <tbody>
@@ -978,31 +990,36 @@
                   <td>Mathematics</td>
                   <td><span class="level-tag">H2</span></td>
                   <td><span class="grade-badge-a">A</span></td>
-                  <td>Pure Math, Linear Algebra, Probability &amp; Statistics</td>
                 </tr>
                 <tr>
                   <td>Chemistry</td>
                   <td><span class="level-tag">H2</span></td>
                   <td><span class="grade-badge-a">A</span></td>
-                  <td>Physical, Inorganic, &amp; Organic Chemistry</td>
                 </tr>
                 <tr>
                   <td>Physics</td>
                   <td><span class="level-tag">H2</span></td>
                   <td><span class="grade-badge-a">A</span></td>
-                  <td>Classical Mechanics, Electromagnetism, Quantum &amp; Nuclear</td>
                 </tr>
                 <tr>
                   <td>Economics</td>
                   <td><span class="level-tag">H2</span></td>
                   <td><span class="grade-badge-a">A</span></td>
-                  <td>Microeconomics, Macroeconomics, Market Analysis &amp; Policy</td>
                 </tr>
                 <tr>
                   <td>Chinese Language</td>
                   <td><span class="level-tag" style="color:var(--neon-cyan);">H1</span></td>
                   <td><span class="grade-badge-a">A</span></td>
-                  <td>Mother Tongue Language Proficiency</td>
+                </tr>
+                <tr>
+                  <td>General Paper</td>
+                  <td><span class="level-tag" style="color:var(--neon-cyan);">H1</span></td>
+                  <td><span class="grade-badge-b">B</span></td>
+                </tr>
+                <tr>
+                  <td>Project Work</td>
+                  <td><span class="level-tag" style="color:var(--neon-cyan);">H1</span></td>
+                  <td><span class="grade-badge-b">B</span></td>
                 </tr>
               </tbody>
             </table>
@@ -1013,7 +1030,7 @@
         </div>
       </div>
 
-      <!-- BPGHS O-Levels Card -->
+      <!-- BPGHS O-Levels Card (Matching RVHS Table Style) -->
       <div class="cyber-card">
         <div class="card-banner">
           <div class="card-title-group">
@@ -1022,24 +1039,67 @@
             </div>
             <div>
               <h3 class="card-heading">Bukit Panjang Government High School</h3>
-              <span class="card-sub">Singapore-Cambridge GCE 'O' Level</span>
+              <span class="card-sub">Singapore-Cambridge GCE 'O' Level (2022 Sitting)</span>
             </div>
           </div>
-          <span class="tag-mono" style="color:var(--neon-green);border-color:var(--neon-green);">STEM Distinctions</span>
+          <span class="tag-mono" style="color:var(--neon-green);border-color:var(--neon-green);font-weight:700;">Straight STEM A1 Distinctions</span>
         </div>
         <div class="exp-body">
           <p>
-            Graduated with an exceptional STEM foundation, achieving <b>A1 distinctions</b> across:
+            Singapore-Cambridge General Certificate of Education Ordinary Level Examination results:
           </p>
-          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.6rem;">
-            <span class="skill-pill">Mathematics — A1</span>
-            <span class="skill-pill">Additional Mathematics — A1</span>
-            <span class="skill-pill">Physics — A1</span>
-            <span class="skill-pill">Chemistry — A1</span>
-            <span class="skill-pill">Biology — A1</span>
-            <span class="skill-pill">English Language — A2</span>
-            <span class="skill-pill">Chinese Language — A2</span>
-            <span class="skill-pill">Social Studies &amp; Geography — A2</span>
+          <div class="results-table-wrap">
+            <table class="cyber-table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Level</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mathematics</td>
+                  <td><span class="level-tag" style="color:var(--neon-yellow);">O-Level</span></td>
+                  <td><span class="grade-badge-a">A1</span></td>
+                </tr>
+                <tr>
+                  <td>Additional Mathematics</td>
+                  <td><span class="level-tag" style="color:var(--neon-yellow);">O-Level</span></td>
+                  <td><span class="grade-badge-a">A1</span></td>
+                </tr>
+                <tr>
+                  <td>Physics</td>
+                  <td><span class="level-tag" style="color:var(--neon-yellow);">O-Level</span></td>
+                  <td><span class="grade-badge-a">A1</span></td>
+                </tr>
+                <tr>
+                  <td>Chemistry</td>
+                  <td><span class="level-tag" style="color:var(--neon-yellow);">O-Level</span></td>
+                  <td><span class="grade-badge-a">A1</span></td>
+                </tr>
+                <tr>
+                  <td>Biology</td>
+                  <td><span class="level-tag" style="color:var(--neon-yellow);">O-Level</span></td>
+                  <td><span class="grade-badge-a">A1</span></td>
+                </tr>
+                <tr>
+                  <td>English Language</td>
+                  <td><span class="level-tag" style="color:var(--neon-yellow);">O-Level</span></td>
+                  <td><span class="grade-badge-b">A2</span></td>
+                </tr>
+                <tr>
+                  <td>Humanities (Social Studies, Geography)</td>
+                  <td><span class="level-tag" style="color:var(--neon-yellow);">O-Level</span></td>
+                  <td><span class="grade-badge-b">A2</span></td>
+                </tr>
+                <tr>
+                  <td>Chinese Language</td>
+                  <td><span class="level-tag" style="color:var(--neon-yellow);">O-Level</span></td>
+                  <td><span class="grade-badge-b">A2 (Oral/Aural: Dist)</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -1060,9 +1120,9 @@
           <div class="skill-pills">
             <span class="skill-pill">Python</span>
             <span class="skill-pill">C++</span>
-            <span class="skill-pill">HTML5</span>
-            <span class="skill-pill">CSS3 / Neon Cyber</span>
-            <span class="skill-pill">JavaScript (ES6+)</span>
+            <span class="skill-pill">HTML</span>
+            <span class="skill-pill">CSS</span>
+            <span class="skill-pill">JavaScript</span>
             <span class="skill-pill">Git / GitHub</span>
           </div>
         </div>
@@ -1072,10 +1132,7 @@
           <div class="skill-pills">
             <span class="skill-pill">Artificial Intelligence</span>
             <span class="skill-pill">Machine Learning</span>
-            <span class="skill-pill">Data Analytics</span>
-            <span class="skill-pill">Computer Graphics</span>
-            <span class="skill-pill">Embedded Systems</span>
-            <span class="skill-pill">Algorithms &amp; Data Structures</span>
+            <span class="skill-pill">Data Science</span>
           </div>
         </div>
 
@@ -1111,14 +1168,14 @@
               </div>
               <div>
                 <h3 class="card-heading">Disability Awareness &amp; Experiential Carnival</h3>
-                <span class="card-sub" style="color:var(--neon-magenta)">Lead Organizer &amp; Simulation Designer · Boon Lay CC</span>
+                <span class="card-sub" style="color:var(--neon-magenta)">Lead Organizer &amp; Simulation Designer · Boon Lay CC (50 Hours VIA)</span>
               </div>
             </div>
             <span class="tag-mono">National-Level Community Impact</span>
           </div>
           <div class="exp-body">
             <p>
-              As an organizer for the national-level <b>Disability Awareness and Experiential Carnival</b> at Boon Lay Community Club, I spearheaded the design of interactive, hands-on simulations that moved beyond passive awareness to foster genuine <b>empathy, understanding, and inclusivity</b>.
+              As an organizer for the national-level <b>Disability Awareness and Experiential Carnival</b> ("Beyond the Limits") at Boon Lay Community Club, I spearheaded the design of interactive, hands-on simulations that moved beyond passive awareness to foster genuine <b>empathy, understanding, and inclusivity</b>.
             </p>
             <p>
               My team developed experiential challenges—including blindfolded obstacle navigation, non-verbal communication stations, and wheelchair soccer—enabling participants to directly encounter and appreciate the physical and emotional barriers faced daily by disabled individuals. Meticulously oversaw <b>logistics, manpower planning, and inter-agency coordination</b> with Boon Lay CC and voluntary welfare organizations.
@@ -1135,14 +1192,14 @@
               </div>
               <div>
                 <h3 class="card-heading">BorgWarner Engineering Internship</h3>
-                <span class="card-sub">Engineering Processes &amp; Cross-Functional Teamwork</span>
+                <span class="card-sub">MOE ETPS Work Attachment Programme · BorgWarner Inc.</span>
               </div>
             </div>
             <span class="tag-mono">Corporate Engineering Exposure</span>
           </div>
           <div class="exp-body">
             <p>
-              Completed an engineering internship with global automotive and e-mobility technology leader <b>BorgWarner</b>. Collaborated within multidisciplinary engineering teams, observing and evaluating manufacturing and diagnostic protocols.
+              Completed an engineering work attachment with global automotive and e-mobility technology leader <b>BorgWarner Inc.</b> under the MOE Engineering &amp; Technology Programme. Collaborated within multidisciplinary engineering teams, observing and evaluating manufacturing and diagnostic protocols.
             </p>
             <p>
               Developed essential 21st-century workplace competencies, including active listening, root-cause process analysis, and inter-departmental communication. Gained direct appreciation for how technical precision, reliability, and human collaboration interface in production systems.
@@ -1159,7 +1216,7 @@
               </div>
               <div>
                 <h3 class="card-heading">Reading Wonders Literacy Programme</h3>
-                <span class="card-sub" style="color:var(--neon-yellow)">Primary 1 Student Reading Mentor · West Grove Primary School</span>
+                <span class="card-sub" style="color:var(--neon-yellow)">Primary 1 Student Reading Mentor · SG CARES @ Boon Lay / West Grove Primary School</span>
               </div>
             </div>
             <span class="tag-mono">Educational Equity VIA</span>
@@ -1225,7 +1282,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         06. AWARDS & HONORS
+         06. AWARDS & HONORS (CHRONOLOGICAL: NEWEST TOP)
          ═══════════════════════════════════════════════ -->
     <section id="awards">
       <div class="section-header">
@@ -1234,17 +1291,75 @@
       </div>
 
       <div class="awards-container">
+        <!-- 2024 -->
         <div class="award-row">
           <div class="award-title-wrap">
             <i class="bi bi-award-fill" style="color:var(--neon-cyan)"></i>
             <div>
               <h4>MOE Engineering &amp; Technology Programme Scholarship (ETPS)</h4>
-              <p>Ministry of Education Singapore · Awarded for top aptitude in mathematics, physical sciences, and engineering</p>
+              <p>Ministry of Education Singapore · Awarded for outstanding academic &amp; co-curricular achievements in science</p>
             </div>
           </div>
-          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2023, 2024</span>
+          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2024</span>
         </div>
 
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
+            <div>
+              <h4>Edusave Certificate of Academic Achievement</h4>
+              <p>Ministry of Education Singapore &amp; People's Association · Pre-U 2, River Valley High School</p>
+            </div>
+          </div>
+          <span class="award-year">2024</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-star-fill" style="color:var(--neon-green)"></i>
+            <div>
+              <h4>Woodgrove CCC - North West CDC Education Merit Award</h4>
+              <p>People's Association &amp; North West Community Development Council · Pre-U 2</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2024</span>
+        </div>
+
+        <!-- 2023 -->
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-award-fill" style="color:var(--neon-cyan)"></i>
+            <div>
+              <h4>MOE Engineering &amp; Technology Programme Scholarship (ETPS)</h4>
+              <p>Ministry of Education Singapore · Awarded for outstanding academic &amp; co-curricular achievements in science</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2023</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
+            <div>
+              <h4>Edusave Certificate of Academic Achievement</h4>
+              <p>Ministry of Education Singapore &amp; People's Association · Pre-U 1, River Valley High School</p>
+            </div>
+          </div>
+          <span class="award-year">2023</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-star-fill" style="color:var(--neon-green)"></i>
+            <div>
+              <h4>Woodgrove CCC - North West CDC Education Merit Award</h4>
+              <p>People's Association &amp; North West Community Development Council · Pre-U 1</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2023</span>
+        </div>
+
+        <!-- 2022 -->
         <div class="award-row">
           <div class="award-title-wrap">
             <i class="bi bi-shield-check" style="color:var(--neon-magenta)"></i>
@@ -1258,10 +1373,33 @@
 
         <div class="award-row">
           <div class="award-title-wrap">
+            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
+            <div>
+              <h4>Edusave Certificate of Academic Achievement</h4>
+              <p>Ministry of Education Singapore &amp; People's Association · Secondary 4, Bukit Panjang Govt. High School</p>
+            </div>
+          </div>
+          <span class="award-year">2022</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
+            <div>
+              <h4>ICAS Assessments for Science — Merit Certificate</h4>
+              <p>UNSW Global · Secondary 4 &amp; 5, Bukit Panjang Govt. High School</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-purple);border-color:var(--neon-purple)">2022</span>
+        </div>
+
+        <!-- 2021 -->
+        <div class="award-row">
+          <div class="award-title-wrap">
             <i class="bi bi-music-note-beamed" style="color:var(--neon-green)"></i>
             <div>
-              <h4>Singapore Youth Festival (SYF) Arts Presentation — Distinction</h4>
-              <p>Ministry of Education Singapore · Executive Committee Section Leader, Chinese Orchestra</p>
+              <h4>Singapore Youth Festival (SYF) Arts Presentation — Certificate of Distinction</h4>
+              <p>Ministry of Education Singapore · Chinese Orchestra, Bukit Panjang Govt. High School</p>
             </div>
           </div>
           <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2021</span>
@@ -1269,10 +1407,56 @@
 
         <div class="award-row">
           <div class="award-title-wrap">
+            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
+            <div>
+              <h4>Edusave Certificate of Academic Achievement</h4>
+              <p>Ministry of Education Singapore &amp; People's Association · Secondary 3, Bukit Panjang Govt. High School</p>
+            </div>
+          </div>
+          <span class="award-year">2021</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-graph-up-arrow" style="color:var(--neon-cyan)"></i>
+            <div>
+              <h4>Edusave Good Progress Award</h4>
+              <p>Ministry of Education Singapore &amp; People's Association · Secondary 3, Bukit Panjang Govt. High School</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2021</span>
+        </div>
+
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
+            <div>
+              <h4>ICAS Assessments for English — Credit Certificate</h4>
+              <p>UNSW Global · Secondary 3, Bukit Panjang Govt. High School</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-purple);border-color:var(--neon-purple)">2021</span>
+        </div>
+
+        <!-- 2020 -->
+        <div class="award-row">
+          <div class="award-title-wrap">
+            <i class="bi bi-graph-up-arrow" style="color:var(--neon-cyan)"></i>
+            <div>
+              <h4>Edusave Good Progress Award</h4>
+              <p>Ministry of Education Singapore &amp; People's Association · Secondary 2, Bukit Panjang Govt. High School</p>
+            </div>
+          </div>
+          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2020</span>
+        </div>
+
+        <!-- 2019 -->
+        <div class="award-row">
+          <div class="award-title-wrap">
             <i class="bi bi-calculator" style="color:var(--neon-yellow)"></i>
             <div>
-              <h4>Australian Mathematics Competition (AMC) — Distinction</h4>
-              <p>Australian Maths Trust · Advanced mathematical problem-solving and higher-order logic</p>
+              <h4>Australian Mathematics Competition (AMC) — Certificate of Distinction</h4>
+              <p>Australian Maths Trust · Junior Division (Year 7), Bukit Panjang Government High School</p>
             </div>
           </div>
           <span class="award-year">2019</span>
@@ -1282,55 +1466,22 @@
           <div class="award-title-wrap">
             <i class="bi bi-globe-americas" style="color:var(--neon-green)"></i>
             <div>
-              <h4>UNSW Global REACH Assessments in Science — Exemplary</h4>
-              <p>University of New South Wales · Top 1% of candidates in Singapore for scientific analysis</p>
+              <h4>UNSW Global REACH Assessments in Science — Exemplary Certificate</h4>
+              <p>University of New South Wales · Top 1% of participants in Singapore, Secondary 1</p>
             </div>
           </div>
           <span class="award-year" style="color:var(--neon-green);border-color:var(--neon-green)">2019</span>
-        </div>
-
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
-            <div>
-              <h4>Edusave Certificate of Academic Achievement</h4>
-              <p>Ministry of Education Singapore · Sustained top academic ranking over 4 consecutive years</p>
-            </div>
-          </div>
-          <span class="award-year">2021–2024</span>
-        </div>
-
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-graph-up-arrow" style="color:var(--neon-cyan)"></i>
-            <div>
-              <h4>Edusave Good Progress Award</h4>
-              <p>Ministry of Education Singapore · Exceptional academic advancement and consistent dedication</p>
-            </div>
-          </div>
-          <span class="award-year" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2020, 2021</span>
-        </div>
-
-        <div class="award-row">
-          <div class="award-title-wrap">
-            <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
-            <div>
-              <h4>ICAS Assessments for Science &amp; English</h4>
-              <p>UNSW Global · Science Merit Certificate (2022) &amp; English Credit Certificate (2021)</p>
-            </div>
-          </div>
-          <span class="award-year" style="color:var(--neon-purple);border-color:var(--neon-purple)">2021, 2022</span>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         07. TESTIMONIALS
+         07. SCHOOL TESTIMONIALS
          ═══════════════════════════════════════════════ -->
     <section id="testimonials">
       <div class="section-header">
         <div class="section-num"><i class="bi bi-hash"></i> 06 // ENDORSEMENTS</div>
-        <h2 class="section-title">Institutional Appraisals</h2>
+        <h2 class="section-title">School Testimonials</h2>
       </div>
 
       <div class="testimonial-tabs">
@@ -1342,35 +1493,51 @@
         </button>
       </div>
 
+      <!-- RVHS Testimonial -->
       <div id="panel-rvhs" class="cyber-card testimonial-panel active">
         <div class="quote-box">
           <p>
-            “Jun Chuan embodies one of the 21st century competencies as a critical thinker. He is a thoughtful and creative individual who thrives when he is challenged to look at issues and problems from multiple perspectives.”
+            Lim Jun Chuan was a student of River Valley High School's Junior College section from 2023 to 2024. He offered Physics, Chemistry, Mathematics, and Economics at H2 level, and General Paper, Chinese and Project Work at H1 level for the Cambridge General Certificate of Education Advanced Level Examination.
           </p>
-        </div>
-        <div class="quote-box">
           <p>
-            “When tasked to analyse the various uses and inner workings of satellites, Jun Chuan carried his research into the area of satellites, giving greater breadth of perspective by studying how satellite technology and space exploration were influenced by this event... When he joined a new project team with unfamiliar team members, he quickly adapted by actively listening to his group mates, seeking to understand their perspectives, ideas, and concerns, learning from their expertise, and adjusting his approach to maximise teamwork and productivity.”
+            Jun Chuan embodies one of the 21st century competencies as a critical thinker. He is a thoughtful and creative individual who thrives when he is challenged to look at issues and problems from multiple perspectives... When tasked to analyse the various uses and inner workings of satellites, Jun Chuan carried his research into the area of satellites, giving greater breadth of perspective by studying how satellite technology and space exploration were influenced by this event.
+          </p>
+          <p>
+            When he joined a new project team to design satellites with unfamiliar team members, he quickly adapted by actively listening to his group mates, seeking to understand their perspectives, ideas, and concerns, learning from their expertise, and adjusting his approach to maximise teamwork and productivity. This active listening not only helped Jun Chuan grasp the collective knowledge and experience of the team but also allowed him to build rapport and trust with his teammates.
           </p>
         </div>
         <p style="font-family:var(--font-mono);font-size:0.88rem;color:var(--neon-cyan)">
-          — Official Testimonial, River Valley High School Junior College (2023–2024)
+          — Official School Testimonial, River Valley High School (Junior College Section)
         </p>
       </div>
 
+      <!-- BPGHS Testimonial (Exact Text from PDF) -->
       <div id="panel-bpghs" class="cyber-card testimonial-panel">
         <div class="quote-box">
           <p>
-            “Jun Chuan is a hardworking, conscientious, and motivated pupil. He shows an avid interest in his work and is keen to learn. His positive learning attitude is evident in his inquisitive nature and his willingness to ask questions whenever he is in doubt. With strong self-discipline, Jun Chuan has made outstanding progress in his academic pursuits.”
+            Lim Jun Chuan was a student of Bukit Panjang Government High School from 2019 to 2022, where he pursued the four-year Singapore Cambridge GCE O-Level course in the Express stream.
           </p>
-        </div>
-        <div class="quote-box">
           <p>
-            “Jun Chuan has shown great proficiency and talent in Mathematics and Science. He is a perceptive and sharp individual with a strong drive to understand how things work... His personal traits and character will undoubtedly stand him in good stead as he continues to pursue success in his future endeavours.”
+            Jun Chuan is a hardworking, conscientious and motivated pupil. He shows avid interest in his work and is keen to learn. His positive learning attitude is evident in his inquiring nature and asking questions when he is in doubt. With self-discipline, Jun Chuan has made outstanding progress in his academic pursuit. A self-directed learner, he maintained excellent grades in all subjects. His amiable nature allows him to work well with others. In group work, Jun Chuan respects others' viewpoints and is a good team player. He is caring towards others and readily extends a helping hand to his peers.
+          </p>
+          <p>
+            Jun Chuan showed great proficiency and talent in Mathematics and Science. He is a perceptive and sharp individual with a drive to understand how things work. His ability to analyze and solve mathematical problems was evident in the numerous academic competitions that he had taken part in. He participated in the Australian Mathematics Competition organized by the Australian Maths Trust (AMT) in 2019 and achieved a Certificate of Distinction. He also participated in the University of New South Wales Global Reach Assessments for Science in 2019 and achieved an Exemplary Certificate for being in the top 1 per cent of participants for the year in Singapore. In addition to that, he took part in the ICAS Assessments for English in 2021 and achieved a Credit Certificate. His academic achievements are evident in the academic awards he has received. In 2020, he attained the Edusave Good Progress Award. In 2021, he was awarded the Edusave Certificate of Academic Achievement and the Edusave Good Progress Award.
+          </p>
+          <p>
+            In his Co-Curricular Activity (CCA), Jun Chuan was a dedicated member of the BPGHS Chinese Orchestra (CO). He was selected to represent the school in the Singapore Youth Festival (SYF) Arts Presentation 2021 where the CO achieved a Certificate of Distinction. Having a strong love for the Chinese orchestral music, he participated actively in numerous school performances by the CO, like the annual Chinese New Year and Mid-Autumn Festival celebrations, Open House performances as well as the annual CCA Roadshow.
+          </p>
+          <p>
+            Despite his heavy academic and CCA commitments, Jun Chuan recognized the importance of contributing to the community so he participated in various Values-In-Action (VIA) activities over the years. In 2019, as a member of the VIA committee of his class, he helped organize and carried out activities to engage the elderly at the MWS Bethany Nursing Home. In 2020, he participated in the Keep the School Clean 2020 Project. Furthermore, in 2021, he actively participated in the Chinese New Year Project Prosperity. In 2022, together with his classmates, he helped plan and organise a Student-Initiated Activity (SIA) where they worked with NParks in the "One Million Trees" project and planted trees in the Choa Chu Kang Park.
+          </p>
+          <p>
+            Jun Chuan attended the Secondary 1 School Leadership Programme (SLD) organized by the school. He also completed a module on leadership in 2019. These opportunities had helped hone his leadership competencies and enabled him to better lead others. Eager to contribute to the school community, Jun Chuan represented his class in the Secondary 1 Inter-Class Games 2019 and the School Sports Carnival 2019.
+          </p>
+          <p>
+            Jun Chuan is a driven and curious student, and has demonstrated leadership qualities. His personal traits and qualities should stand him in good stead in achieving success in his future endeavours.
           </p>
         </div>
         <p style="font-family:var(--font-mono);font-size:0.88rem;color:var(--neon-cyan)">
-          — Official Testimonial, Bukit Panjang Government High School
+          — Official School Testimonial, Bukit Panjang Government High School
         </p>
       </div>
     </section>
