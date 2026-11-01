@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lim Jun Chuan — Portfolio &amp; Scholarship Profile</title>
+  <meta name="description" content="Lim Jun Chuan — Singapore CS student, ETPS Scholar, aspiring NUS Computer Science AY2027. Portfolio showcasing academic results, awards, CCA leadership, and community service." />
+  <meta property="og:title" content="Lim Jun Chuan — Portfolio &amp; Scholarship Profile" />
+  <meta property="og:description" content="Singapore CS student &amp; ETPS Scholar targeting NUS CS AY2027. 4× H2 A grades, national-level community leader, Python/C++ developer." />
+  <meta property="og:url" content="https://limjunchuan567.github.io/portfolio/" />
+  <meta property="og:type" content="website" />
 
   <!-- Google Fonts: Orbitron, Chakra Petch, Nunito Sans, Share Tech Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -827,11 +832,63 @@
     }
 
     /* ============================================================
+       MOBILE HAMBURGER
+       ============================================================ */
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 201;
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--neon-cyan);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .mobile-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-toggle.open span:nth-child(2) { opacity: 0; }
+    .mobile-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============================================================
        RESPONSIVE DESIGN
        ============================================================ */
     @media (max-width: 850px) {
+      .mobile-toggle {
+        display: flex;
+      }
       .nav-links {
         display: none;
+        position: fixed;
+        top: 62px;
+        left: 0;
+        right: 0;
+        background: rgba(11, 16, 43, 0.97);
+        border-bottom: 1px solid var(--line-bright);
+        padding: 1rem 1.5rem 1.5rem;
+        flex-direction: column;
+        gap: 0.2rem;
+        z-index: 200;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .nav-links li {
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-links li:last-child { border-bottom: none; }
+      .nav-links a {
+        display: block;
+        padding: 0.7rem 0;
+        font-size: 1rem;
       }
       header.site-header {
         padding: 0 1.2rem;
@@ -882,20 +939,23 @@
     </a>
 
     <nav class="nav-bar">
-      <ul class="nav-links">
-        <li><a href="#about"><span class="num">01.</span>About</a></li>
-        <li><a href="#education"><span class="num">02.</span>Education</a></li>
-        <li><a href="#skills"><span class="num">03.</span>Skills</a></li>
-        <li><a href="#experience"><span class="num">04.</span>Leadership</a></li>
-        <li><a href="#awards"><span class="num">05.</span>Awards</a></li>
-        <li><a href="#testimonials"><span class="num">06.</span>Testimonials</a></li>
-        <li><a href="#contact"><span class="num">07.</span>Contact</a></li>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" onclick="closeNav()"><span class="num">01.</span>About</a></li>
+        <li><a href="#education" onclick="closeNav()"><span class="num">02.</span>Education</a></li>
+        <li><a href="#skills" onclick="closeNav()"><span class="num">03.</span>Skills</a></li>
+        <li><a href="#experience" onclick="closeNav()"><span class="num">04.</span>Leadership</a></li>
+        <li><a href="#awards" onclick="closeNav()"><span class="num">05.</span>Awards</a></li>
+        <li><a href="#testimonials" onclick="closeNav()"><span class="num">06.</span>Testimonials</a></li>
+        <li><a href="#contact" onclick="closeNav()"><span class="num">07.</span>Contact</a></li>
       </ul>
 
       <div class="nav-actions">
         <a href="https://drive.google.com/file/d/1J1Yv6Yk2QS0RFgWHPvFAE156v3FK8xhd/view?usp=sharing" target="_blank" rel="noopener" class="btn-cyber btn-cyber-primary">
           <i class="bi bi-file-earmark-pdf-fill"></i> Certs PDF
         </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" onclick="toggleNav()">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
   </header>
@@ -1732,6 +1792,18 @@
       document.querySelectorAll('.t-tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('panel-' + id).classList.add('active');
       btn.classList.add('active');
+    }
+
+    // Mobile nav toggle
+    function toggleNav() {
+      const nav = document.getElementById('navLinks');
+      const btn = document.getElementById('mobileToggle');
+      nav.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+    function closeNav() {
+      document.getElementById('navLinks').classList.remove('open');
+      document.getElementById('mobileToggle').classList.remove('open');
     }
 
     // Award interactive toggle (brief button -> expands full detail)
