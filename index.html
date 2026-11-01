@@ -232,16 +232,6 @@
       color: #fff;
     }
 
-    /* Mobile toggle */
-    .mobile-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--neon-cyan);
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
-
     /* ============================================================
        LAYOUT & SECTIONS
        ============================================================ */
@@ -584,7 +574,7 @@
     }
 
     /* ============================================================
-       EXPERIENCES & IMPACT (CARDS WITH BACKDROPS)
+       EXPERIENCES & IMPACT
        ============================================================ */
     .experience-list {
       display: flex;
@@ -608,70 +598,120 @@
     }
 
     /* ============================================================
-       AWARDS LIST (GROUPED AWARDS WITH DETAILED ACCORDION DESCRIPTIONS)
+       AWARDS ACCORDION (INTERACTIVE SUMMARY & DETAILS)
        ============================================================ */
     .awards-container {
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
+      gap: 0.9rem;
     }
 
-    .award-card {
+    .award-item {
       background: var(--card-bg);
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
-      padding: 1.3rem 1.6rem;
+      overflow: hidden;
       transition: all 0.25s ease;
     }
 
-    .award-card:hover {
+    .award-item:hover {
       border-color: var(--neon-cyan);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
-      transform: translateX(4px);
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.2);
     }
 
-    .award-header-row {
+    .award-btn-header {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.1rem 1.4rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
     }
 
-    .award-title-wrap {
+    .award-btn-left {
       display: flex;
       align-items: center;
       gap: 0.9rem;
+      flex: 1;
     }
 
-    .award-title-wrap i {
+    .award-btn-left i.award-icon {
       font-size: 1.35rem;
       color: var(--neon-yellow);
+      flex-shrink: 0;
     }
 
-    .award-title-wrap h4 {
+    .award-title-line {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .award-title-line h4 {
       font-family: var(--font-heading);
-      font-size: 1.08rem;
+      font-size: 1.05rem;
       color: #fff;
       font-weight: 700;
     }
 
+    .award-summary-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .award-btn-right {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+
     .award-years-tag {
       font-family: var(--font-mono);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       color: var(--neon-yellow);
       background: rgba(255, 214, 10, 0.12);
       border: 1px solid rgba(255, 214, 10, 0.3);
-      padding: 0.25rem 0.8rem;
+      padding: 0.2rem 0.7rem;
       border-radius: 4px;
       white-space: nowrap;
     }
 
-    .award-desc-text {
+    .award-arrow {
+      color: var(--neon-cyan);
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .award-item.open .award-arrow {
+      transform: rotate(180deg);
+    }
+
+    .award-detail-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      background: rgba(10, 15, 36, 0.85);
+      border-top: 1px solid transparent;
+      padding: 0 1.4rem;
+    }
+
+    .award-item.open .award-detail-body {
+      max-height: 500px;
+      padding: 1.1rem 1.4rem 1.4rem;
+      border-top-color: rgba(0, 240, 255, 0.12);
+    }
+
+    .award-detail-body p {
       color: var(--muted-bright);
       font-size: 0.94rem;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     /* ============================================================
@@ -793,9 +833,6 @@
       .nav-links {
         display: none;
       }
-      .mobile-toggle {
-        display: block;
-      }
       header.site-header {
         padding: 0 1.2rem;
       }
@@ -805,10 +842,14 @@
     }
 
     @media (max-width: 600px) {
-      .award-header-row {
+      .award-btn-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.5rem;
+        gap: 0.6rem;
+      }
+      .award-btn-right {
+        width: 100%;
+        justify-content: space-between;
       }
       .card-banner {
         flex-direction: column;
@@ -1036,7 +1077,7 @@
         </div>
       </div>
 
-      <!-- BPGHS O-Levels Card (Matching RVHS Table Style) -->
+      <!-- BPGHS O-Levels Card -->
       <div class="cyber-card">
         <div class="card-banner">
           <div class="card-title-group">
@@ -1261,29 +1302,50 @@
           </div>
         </div>
 
-        <!-- School Leadership (Editorial Club & Chinese Orchestra) -->
+        <!-- CCA CARD 1: Chinese Orchestra -->
+        <div class="cyber-card">
+          <div class="card-banner">
+            <div class="card-title-group">
+              <div class="card-icon-badge green">
+                <i class="bi bi-music-note-beamed"></i>
+              </div>
+              <div>
+                <h3 class="card-heading">BPGHS Chinese Orchestra</h3>
+                <span class="card-sub" style="color:var(--neon-green)">Executive Committee Member &amp; Section Leader · SYF Distinction (2021)</span>
+              </div>
+            </div>
+            <span class="tag-mono">Arts Excellence &amp; Team Resilience</span>
+          </div>
+          <div class="exp-body">
+            <p>
+              As a dedicated member of the <b>BPGHS Chinese Orchestra</b>, I consistently demonstrated passion for Chinese orchestral music through active participation and commitment. Despite initial setbacks, including the challenge of learning a new instrument and mastering musical scores from scratch, I did not make the cut after my first audition for the Singapore Youth Festival (SYF) Arts Presentation 2021 team. Rather than allowing this to discourage me, I treated it as an opportunity for growth, dedicating myself to disciplined practice and proactively seeking guidance from seniors to refine my technique, strengthen instrument mastery, and improve my synchronisation with the ensemble. Through perseverance and determination, I successfully re-auditioned and became an integral member of the team.
+            </p>
+            <p>
+              Beyond my personal progress, I also contributed meaningfully as an <b>EXCO member</b>, where I played a key role in fostering teamwork and encouraging my peers to work towards shared goals. I actively participated in numerous school performances, including the annual Chinese New Year and Mid-Autumn Festival celebrations, Open House showcases, and the CCA Roadshow. This journey of resilience and leadership, together with the collective efforts of the team, culminated in achieving a <b>Certificate of Distinction at the SYF Arts Presentation 2021</b>.
+            </p>
+          </div>
+        </div>
+
+        <!-- CCA CARD 2: Editorial Club -->
         <div class="cyber-card">
           <div class="card-banner">
             <div class="card-title-group">
               <div class="card-icon-badge purple">
-                <i class="bi bi-diagram-3-fill"></i>
+                <i class="bi bi-newspaper"></i>
               </div>
               <div>
-                <h3 class="card-heading">Co-Curricular Leadership &amp; Creative Communication</h3>
-                <span class="card-sub" style="color:#d8b4fe">Editorial Club &amp; Chinese Orchestra (CO)</span>
+                <h3 class="card-heading">RVHS Editorial Club</h3>
+                <span class="card-sub" style="color:#d8b4fe">School Media Team Webmaster &amp; Investigative Journalism (2023–2024)</span>
               </div>
             </div>
-            <span class="tag-mono">Institutional Leadership</span>
+            <span class="tag-mono">Digital Media &amp; Communications</span>
           </div>
           <div class="exp-body">
             <p>
-              <b>Chinese Orchestra (BPGHS):</b> As a dedicated member of the BPGHS Chinese Orchestra, I consistently demonstrated my passion for Chinese orchestral music through active participation and commitment. Despite initial setbacks, including the challenge of learning a new instrument and mastering musical scores from scratch, I did not make the cut after my first audition for the Singapore Youth Festival (SYF) Arts Presentation 2021 team. Rather than allowing this to discourage me, I treated it as an opportunity for growth, dedicating myself to disciplined practice and proactively seeking guidance from seniors to refine my technique, strengthen my instrument mastery, and improve my ability to synchronise with the ensemble. Through perseverance and determination, I successfully re-auditioned and became an integral member of the team.
+              As <b>Webmaster</b> of the RVHS Editorial Club and member of the school media team, I managed digital publications and wrote articles covering major school milestones such as Teachers’ Day, RVmun, and YLEAD. I conducted interviews with key stakeholders and collaborated cross-functionally with various CCAs, including Venture Scouts and HACAs, to publish their features and form new community connections.
             </p>
             <p>
-              Beyond my personal progress, I also contributed meaningfully as an EXCO member, where I played a key role in fostering teamwork and encouraging my peers to work towards shared goals. I actively participated in numerous school performances, including the annual Chinese New Year and Mid-Autumn Festival celebrations, Open House showcases, and the CCA Roadshow, further demonstrating my commitment to the orchestra. This journey of resilience and leadership, together with the collective efforts of the team, culminated in us achieving a <b>Certificate of Distinction at the SYF Arts Presentation</b>. Through this experience, I not only deepened my appreciation for music but also strengthened my resilience, adaptability, and ability to collaborate effectively under pressure.
-            </p>
-            <p style="margin-top:0.8rem;">
-              <b>Editorial Club (RVHS):</b> As a member of the school media team, I wrote articles about school events such as Teachers’ Day, RVmun, and YLEAD. I conducted interviews with many people and participated in these events to gain personal insights. I also collaborated with various CCAs, such as Venture Scouts and HACAs, to publish their articles, forming new connections and improving my writing skills in the process. I learned new writing techniques to make articles interesting and gained communication skills to ensure interviewees felt comfortable during interviews. Through this experience, I learned 21st-century competencies such as self-awareness, self-management, responsible decision-making, and social awareness. Interviewing involved empathetic listening and understanding others’ perspectives and experiences. I learned when to be quiet and when to ask questions, developing empathy, cultural sensitivity, and a broader worldview essential for building strong relationships, resolving conflicts, and collaborating effectively with diverse groups. Crafting insightful questions and analysing responses enhanced my critical thinking skills, enabling me to evaluate information, identify patterns, and draw conclusions more effectively. Through my CCA involvement, I overcame my lack of confidence and communication challenges, becoming a more sociable and friendlier person.
+              Through this experience, I learned vital 21st-century competencies including self-awareness, self-management, and social awareness. Interviewing demanded empathetic listening and understanding diverse perspectives—learning when to listen and when to probe, developing empathy, cultural sensitivity, and a broader worldview essential for conflict resolution and collaborative teamwork. Crafting insightful questions and analysing responses sharpened my critical thinking skills, enabling me to evaluate complex information, identify patterns, and synthesize clear conclusions. Through my active CCA involvement, I overcame initial communication challenges to become an articulate, confident, and collaborative leader.
             </p>
           </div>
         </div>
@@ -1291,7 +1353,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         06. AWARDS & HONORS (GROUPED BY AWARD NAME, CHRONOLOGICAL DESCENDING)
+         06. AWARDS & HONORS (INTERACTIVE BRIEF + EXPANDABLE DETAILS)
          ═══════════════════════════════════════════════ -->
     <section id="awards">
       <div class="section-header">
@@ -1299,145 +1361,229 @@
         <h2 class="section-title">Honors &amp; Awards Archive</h2>
       </div>
 
+      <p style="color:var(--muted);font-size:0.92rem;margin-bottom:1.4rem;">
+        <i class="bi bi-info-circle me-1 text-info"></i> Click on any award to toggle full details and personal reflections.
+      </p>
+
       <div class="awards-container">
         <!-- 1. ETPS -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-award-fill" style="color:var(--neon-cyan)"></i>
-              <h4>MOE Engineering &amp; Tech Programme Scholarship (ETPS)</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-award-fill award-icon" style="color:var(--neon-cyan)"></i>
+              <div class="award-title-line">
+                <h4>MOE Engineering &amp; Tech Programme Scholarship (ETPS)</h4>
+                <div class="award-summary-text">Prestigious national scholarship awarded by MOE for top academic and co-curricular aptitude in math and science.</div>
+              </div>
             </div>
-            <span class="award-years-tag" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2023, 2024</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2023, 2024</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              I received the Engineering and Tech Programme (ETPS) Scholarship from the Ministry of Education (MOE), recognizing my excellence in Math and Science and my aptitude for cross-disciplinary, hands-on learning. This prestigious award affirms my analytical skills, problem-solving ability, and perseverance in tackling challenging academic pursuits. It has further strengthened my passion for engineering, where I can apply scientific knowledge to address real-world challenges. Ultimately, receiving this scholarship humbles me and reinforces my commitment to improving people's lives through innovation and technical excellence.
+            </p>
           </div>
-          <p class="award-desc-text">
-            I received the Engineering and Tech Programme (ETPS) Scholarship from the Ministry of Education (MOE), recognizing my excellence in Math and Science and my aptitude for cross-disciplinary, hands-on learning. This prestigious award affirms my analytical skills, problem-solving ability, and perseverance in tackling challenging academic pursuits. It has further strengthened my passion for engineering, where I can apply scientific knowledge to address real-world challenges. Ultimately, receiving this scholarship humbles me and reinforces my commitment to improving people's lives through innovation and technical excellence.
-          </p>
         </div>
 
         <!-- 2. Edusave Academic Achievement -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-trophy-fill" style="color:var(--neon-yellow)"></i>
-              <h4>Edusave Certificate of Academic Achievement</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-trophy-fill award-icon" style="color:var(--neon-yellow)"></i>
+              <div class="award-title-line">
+                <h4>Edusave Certificate of Academic Achievement</h4>
+                <div class="award-summary-text">Conferred for consecutive years by MOE &amp; People's Association for top academic performance and conduct.</div>
+              </div>
             </div>
-            <span class="award-years-tag">2021, 2022, 2023, 2024</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag">2021, 2022, 2023, 2024</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              Receiving the Edusave Certificate of Academic Achievement for consecutive years reflects my unwavering determination, discipline, and dedication. This consistent academic excellence demonstrates my ability to persevere through challenges, master complex concepts, and maintain high standards. My commitment to lifelong learning and self-improvement fuels my passion for excellence, where resilience and continuous growth are crucial. Just as I have pushed myself to excel academically, I am eager to apply this same drive to my future studies and professional endeavors, ensuring I make a meaningful impact in my chosen field.
+            </p>
           </div>
-          <p class="award-desc-text">
-            Receiving the Edusave Certificate of Academic Achievement for consecutive years reflects my unwavering determination, discipline, and dedication. This consistent academic excellence demonstrates my ability to persevere through challenges, master complex concepts, and maintain high standards. My commitment to lifelong learning and self-improvement fuels my passion for excellence, where resilience and continuous growth are crucial. Just as I have pushed myself to excel academically, I am eager to apply this same drive to my future studies and professional endeavors, ensuring I make a meaningful impact in my chosen field.
-          </p>
         </div>
 
         <!-- 3. Woodgrove CCC - North West CDC -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-star-fill" style="color:var(--neon-green)"></i>
-              <h4>Woodgrove CCC - North West CDC Education Merit Award</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-star-fill award-icon" style="color:var(--neon-green)"></i>
+              <div class="award-title-line">
+                <h4>Woodgrove CCC - North West CDC Education Merit Award</h4>
+                <div class="award-summary-text">Awarded in Pre-U 1 &amp; Pre-U 2 for scholastic merit, character, and active community participation.</div>
+              </div>
             </div>
-            <span class="award-years-tag" style="color:var(--neon-green);border-color:var(--neon-green)">2023, 2024</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag" style="color:var(--neon-green);border-color:var(--neon-green)">2023, 2024</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              Conferred by the People's Association and North West Community Development Council in Pre-U 1 (2023) and Pre-U 2 (2024) in recognition of outstanding academic merit, community engagement, and consistent educational excellence across River Valley High School.
+            </p>
           </div>
-          <p class="award-desc-text">
-            Conferred by the People's Association and North West Community Development Council in Pre-U 1 (2023) and Pre-U 2 (2024) in recognition of outstanding academic merit, community engagement, and consistent educational excellence.
-          </p>
         </div>
 
         <!-- 4. NYAA -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-shield-check" style="color:var(--neon-magenta)"></i>
-              <h4>National Youth Achievement Award (NYAA) — Bronze Medal</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-shield-check award-icon" style="color:var(--neon-magenta)"></i>
+              <div class="award-title-line">
+                <h4>National Youth Achievement Award (NYAA) — Bronze Medal</h4>
+                <div class="award-summary-text">National recognition for leadership, community service initiative, personal self-reliance, and physical endurance.</div>
+              </div>
             </div>
-            <span class="award-years-tag" style="color:var(--neon-magenta);border-color:var(--neon-magenta)">2022</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag" style="color:var(--neon-magenta);border-color:var(--neon-magenta)">2022</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              Awarded by the National Youth Achievement Award Council Singapore for sustained personal qualities of leadership, community service initiative, self-reliance, and physical endurance across multi-month milestones.
+            </p>
           </div>
-          <p class="award-desc-text">
-            Awarded by the National Youth Achievement Award Council Singapore for sustained personal qualities of leadership, community service initiative, self-reliance, and physical endurance across multi-month milestones.
-          </p>
         </div>
 
         <!-- 5. ICAS Science -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
-              <h4>ICAS Assessments for Science — Merit Certificate</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-patch-check award-icon" style="color:var(--neon-purple)"></i>
+              <div class="award-title-line">
+                <h4>ICAS Assessments for Science — Merit Certificate</h4>
+                <div class="award-summary-text">Higher-order scientific inquiry, empirical data interpretation, and advanced hypothesis evaluation.</div>
+              </div>
             </div>
-            <span class="award-years-tag" style="color:var(--neon-purple);border-color:var(--neon-purple)">2022</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag" style="color:var(--neon-purple);border-color:var(--neon-purple)">2022</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              Conferred by UNSW Global in Secondary 4 &amp; 5 for higher-order scientific inquiry, empirical data interpretation, and advanced scientific reasoning under competitive examination conditions.
+            </p>
           </div>
-          <p class="award-desc-text">
-            Conferred by UNSW Global in Secondary 4 &amp; 5 for higher-order scientific inquiry, empirical data interpretation, and advanced scientific reasoning.
-          </p>
         </div>
 
         <!-- 6. SYF Arts Presentation -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-music-note-beamed" style="color:var(--neon-green)"></i>
-              <h4>Singapore Youth Festival (SYF) Arts Presentation — Certificate of Distinction</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-music-note-beamed award-icon" style="color:var(--neon-green)"></i>
+              <div class="award-title-line">
+                <h4>Singapore Youth Festival (SYF) Arts Presentation — Distinction</h4>
+                <div class="award-summary-text">Highest national arts distinction attained with BPGHS Chinese Orchestra as Section Leader &amp; EXCO.</div>
+              </div>
             </div>
-            <span class="award-years-tag" style="color:var(--neon-green);border-color:var(--neon-green)">2021</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag" style="color:var(--neon-green);border-color:var(--neon-green)">2021</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              Conferred by the Ministry of Education Singapore upon the BPGHS Chinese Orchestra. Represented the school as an Executive Committee member and section leader following dedicated technical preparation, disciplined practice, and ensemble synchronization under high-pressure adjudication.
+            </p>
           </div>
-          <p class="award-desc-text">
-            Conferred by the Ministry of Education Singapore upon the BPGHS Chinese Orchestra. Represented the school as an Executive Committee member and section leader following dedicated technical preparation and disciplined ensemble synchronization.
-          </p>
         </div>
 
         <!-- 7. Edusave Good Progress Award -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-graph-up-arrow" style="color:var(--neon-cyan)"></i>
-              <h4>Edusave Good Progress Award</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-graph-up-arrow award-icon" style="color:var(--neon-cyan)"></i>
+              <div class="award-title-line">
+                <h4>Edusave Good Progress Award</h4>
+                <div class="award-summary-text">Recognizing significant academic improvement, exemplary perseverance, and scholastic drive.</div>
+              </div>
             </div>
-            <span class="award-years-tag" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2020, 2021</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag" style="color:var(--neon-cyan);border-color:var(--neon-cyan)">2020, 2021</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              Awarded by the Ministry of Education Singapore in Secondary 2 (2020) and Secondary 3 (2021) in recognition of significant academic improvement and strong determination to excel.
+            </p>
           </div>
-          <p class="award-desc-text">
-            Awarded by the Ministry of Education Singapore in Secondary 2 (2020) and Secondary 3 (2021) in recognition of significant academic improvement and strong determination to excel.
-          </p>
         </div>
 
         <!-- 8. ICAS English -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-patch-check" style="color:var(--neon-purple)"></i>
-              <h4>ICAS Assessments for English — Credit Certificate</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-patch-check award-icon" style="color:var(--neon-purple)"></i>
+              <div class="award-title-line">
+                <h4>ICAS Assessments for English — Credit Certificate</h4>
+                <div class="award-summary-text">Recognizing advanced reading comprehension, nuanced textual analysis, and linguistic precision.</div>
+              </div>
             </div>
-            <span class="award-years-tag" style="color:var(--neon-purple);border-color:var(--neon-purple)">2021</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag" style="color:var(--neon-purple);border-color:var(--neon-purple)">2021</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              Awarded by UNSW Global in Secondary 3 for reading comprehension, text analysis, vocabulary mastery, and linguistic precision across international assessment criteria.
+            </p>
           </div>
-          <p class="award-desc-text">
-            Awarded by UNSW Global in Secondary 3 for reading comprehension, text analysis, vocabulary mastery, and linguistic precision.
-          </p>
         </div>
 
         <!-- 9. Australian Mathematics Competition -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-calculator" style="color:var(--neon-yellow)"></i>
-              <h4>Australian Mathematics Competition — Certificate of Distinction</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-calculator award-icon" style="color:var(--neon-yellow)"></i>
+              <div class="award-title-line">
+                <h4>Australian Mathematics Competition — Certificate of Distinction</h4>
+                <div class="award-summary-text">International mathematical distinction in higher-order problem-solving and rigorous logical reasoning.</div>
+              </div>
             </div>
-            <span class="award-years-tag">2019</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag">2019</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              Achieving a Distinction in the Australian Mathematics Competition highlights my strong analytical thinking, problem-solving skills, and ability to apply critical and higher-order thinking. Just as mathematics requires logical reasoning and attention to detail, complex projects demand advanced problem-solving and strategic decision-making. This achievement reflects my ability to approach multifaceted challenges methodically, think critically, and synthesize information to find effective solutions. I am eager to apply this intellectual rigor and perseverance to my future studies, where critical thinking and higher-order problem-solving are essential for driving impactful outcomes and addressing real-world challenges.
+            </p>
           </div>
-          <p class="award-desc-text">
-            Achieving a Distinction in the Australian Mathematics Competition highlights my strong analytical thinking, problem-solving skills, and ability to apply critical and higher-order thinking. Just as mathematics requires logical reasoning and attention to detail, complex projects demand advanced problem-solving and strategic decision-making. This achievement reflects my ability to approach multifaceted challenges methodically, think critically, and synthesize information to find effective solutions. I am eager to apply this intellectual rigor and perseverance to my future studies, where critical thinking and higher-order problem-solving are essential for driving impactful outcomes and addressing real-world challenges.
-          </p>
         </div>
 
         <!-- 10. UNSW Global REACH Science -->
-        <div class="award-card">
-          <div class="award-header-row">
-            <div class="award-title-wrap">
-              <i class="bi bi-globe-americas" style="color:var(--neon-green)"></i>
-              <h4>UNSW Global REACH Assessments in Science — Exemplary Certificate</h4>
+        <div class="award-item">
+          <button class="award-btn-header" onclick="toggleAward(this)">
+            <div class="award-btn-left">
+              <i class="bi bi-globe-americas award-icon" style="color:var(--neon-green)"></i>
+              <div class="award-title-line">
+                <h4>UNSW Global REACH Assessments in Science — Exemplary Certificate</h4>
+                <div class="award-summary-text">Top 1% of participants in Singapore for advanced scientific principles and empirical problem-solving.</div>
+              </div>
             </div>
-            <span class="award-years-tag" style="color:var(--neon-green);border-color:var(--neon-green)">2019</span>
+            <div class="award-btn-right">
+              <span class="award-years-tag" style="color:var(--neon-green);border-color:var(--neon-green)">2019</span>
+              <i class="bi bi-chevron-down award-arrow"></i>
+            </div>
+          </button>
+          <div class="award-detail-body">
+            <p>
+              Achieving an Exemplary award in the UNSW Global REACH Assessments in Science demonstrates my strong grasp of scientific concepts and my ability to think critically and analytically (awarded for being in the top 1 per cent of participants in Singapore). This recognition reflects not only my dedication to mastering scientific knowledge but also my ability to apply higher-order thinking to complex problems—skills that are crucial for tackling rigorous academic and professional challenges. Just as science demands precision and innovation, success in high-pressure environments requires a similar level of expertise and problem-solving ability. I am confident that this foundation in science will serve as a strong basis for my future endeavors, where critical thinking and a deep understanding of scientific principles are essential for driving meaningful progress and delivering impactful results.
+            </p>
           </div>
-          <p class="award-desc-text">
-            Achieving an Exemplary award in the UNSW Global REACH Assessments in Science demonstrates my strong grasp of scientific concepts and my ability to think critically and analytically (awarded for being in the top 1 per cent of participants in Singapore). This recognition reflects not only my dedication to mastering scientific knowledge but also my ability to apply higher-order thinking to complex problems—skills that are crucial for tackling rigorous academic and professional challenges. Just as science demands precision and innovation, success in high-pressure environments requires a similar level of expertise and problem-solving ability. I am confident that this foundation in science will serve as a strong basis for my future endeavors, where critical thinking and a deep understanding of scientific principles are essential for driving meaningful progress and delivering impactful results.
-          </p>
         </div>
       </div>
     </section>
@@ -1479,7 +1625,7 @@
             Jun Chuan has written several articles about school events, such as Teachers' Day, RVmun, and Ylead. He conducted interviews with many people and participated in these events to gain personal insights. Jun Chuan also collaborated with various CCAs, such as Venture Scouts and HACAs, to publish their articles, forming new connections and improving his writing skills in the process. He learned new writing techniques to make articles interesting and gained communication skills to ensure interviewees felt comfortable during interviews. Through this experience, Jun Chuan learned 21st-century competencies such as self-awareness, self-management, responsible decision-making, and social awareness. Interviewing involved empathetic listening and understanding others' perspectives and experiences. He learned when to be quiet and when to ask questions, developing empathy, cultural sensitivity, and a broader worldview essential for building strong relationships, resolving conflicts, and collaborating effectively with diverse groups. Crafting insightful questions and analysing responses enhanced his critical thinking skills, enabling him to evaluate information, identify patterns, and draw conclusions more effectively. Through his CCA involvement, Jun chuan overcame their lack of confidence and communication challenges, becoming a more sociable and friendlier person.
           </p>
           <p>
-            Jun Chuan is good at adapting to new environments and situations and communicating with others, allowing him to thrive in challenging settings. When he joined a new project team to design satellites with unfamiliar team members, he quickly adapted by actively listening to their group mates, seeking to understand their perspectives, ideas, and concerns, learning from their expertise, and adjusting their approach to maximise teamwork and productivity. This active listening not only helped Jun chuan grasp the collective knowledge and experience of the team but also allowed them to build rapport and trust with their teammates.
+            Jun Chuan is good at adapting to new environments and situations and communicating with others, allowing him to thrive in challenging settings. When he joined a new project team to design satellites with unfamiliar team members, he quickly adapted by actively listening to their group mates, seeking to understand their perspectives, ideas, and concerns, learning from their expertise, and adjusting his approach to maximise teamwork and productivity. This active listening not only helped Jun chuan grasp the collective knowledge and experience of the team but also allowed them to build rapport and trust with their teammates.
           </p>
           <p>
             Jun Chuan struggled with self-doubt and a lack of confidence in their abilities. To overcome this, he engaged in self-improvement activities such as seeking feedback from mentors and practising positive self-talk. Over time, Jun Chuan developed a stronger sense of confidence in himself and his capabilities, allowing him to take on new challenges with courage.
@@ -1586,6 +1732,12 @@
       document.querySelectorAll('.t-tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('panel-' + id).classList.add('active');
       btn.classList.add('active');
+    }
+
+    // Award interactive toggle (brief button -> expands full detail)
+    function toggleAward(button) {
+      const item = button.closest('.award-item');
+      item.classList.toggle('open');
     }
 
     // Cyber particle background canvas
